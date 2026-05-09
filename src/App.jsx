@@ -281,7 +281,21 @@ export default function App() {
 
             <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8">
               <h3 className="text-2xl font-semibold mb-2">
-                Full Stack Developer
+                <TypeAnimation
+                  sequence={[
+                    'Full Stack Developer',
+                    1500,
+                    'React Developer',
+                    1500,
+                    'Startup Builder',
+                    1500,
+                    'MERN Engineer',
+                    1500,
+                  ]}
+                  wrapper="span"
+                  speed={50}
+                  repeat={Infinity}
+                />
               </h3>
               <p className="text-gray-400">
                 Designing and developing responsive web applications and startup
