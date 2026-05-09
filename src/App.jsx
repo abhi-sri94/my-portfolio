@@ -336,10 +336,6 @@ export default function App() {
 
               <br />
 
-              <span className="text-emerald-400">
-                Or have work
-              </span>
-
             </h2>
 
             <p className="text-lg md:text-xl">
