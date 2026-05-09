@@ -49,7 +49,7 @@ export default function App() {
     'Tailwind CSS',
     'Firebase',
     'GitHub',
-    'Netlify',
+    'Vercel',
     'UI/UX Design',
     'Responsive Design',
   ];
@@ -97,9 +97,10 @@ export default function App() {
               Abhishek <br /> Srivastava
             </h1>
 
-            <p className="text-gray-400 text-lg leading-relaxed max-w-xl mb-8">
-              Software Engineer and Startup Builder creating scalable digital
-              products like SafarShare, Dayli Delivery, and Rockclimb Networks.
+            <p className="text-gray-300 text-xl leading-loose max-w-2xl mb-8">
+              Full Stack Developer & Startup Builder.<br />
+              Creating scalable platforms, modern interfaces,<br />
+              and real-world digital solutions.
             </p>
 
             <div className="flex gap-4 flex-wrap">
@@ -243,15 +244,27 @@ export default function App() {
       {/* Skills */}
       < section id="skills" className="py-24 px-6 border-t border-white/10" >
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-14">Skills & Technologies</h2>
+          <h2 className="text-5xl font-bold text-center mb-16 tracking-wide">
+            <span className="text-teal-300">tech</span>
+            <span className="text-purple-400">:</span>
+            <span className="text-blue-200">skills</span>
+          </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {skills.map((skill, index) => (
               <div
                 key={index}
-                className="bg-zinc-900 border border-white/10 rounded-2xl py-6 text-center hover:border-blue-500 hover:bg-blue-500/10 hover:text-white hover:-translate-y-1 transition"
+                className="group bg-gradient-to-br from-[#151515] to-[#1f1f1f] 
+                    border border-white/10 rounded-2xl px-6 py-5
+                    flex items-center justify-center
+                    hover:border-cyan-400
+                    hover:shadow-[0_0_35px_rgba(34,211,238,0.45)]
+                    hover:-translate-y-2
+                    transition duration-300"
               >
-                <p className="font-medium text-gray-200">{skill}</p>
+                <span className="text-lg font-semibold text-white group-hover:text-cyan-400 transition">
+                  {skill}
+                </span>
               </div>
             ))}
           </div>
@@ -310,50 +323,47 @@ export default function App() {
       {/* Contact */}
       < section
         id="contact"
-        className="py-24 px-6 border-t border-white/10"
+        className="py-15 px-6 border-t border-white/10"
       >
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Let’s Build Something</h2>
 
-          <p className="text-gray-400 max-w-2xl mx-auto mb-12 text-lg leading-relaxed">
-            Interested in working together, collaborating on a startup, or
-            building a digital product? Let’s connect.
-          </p>
+          <div className="mt-16">
+            <h2 className="text-5xl md:text-7xl font-bold leading-tight mb-10">
 
-          <div className="bg-zinc-900 border border-white/10 rounded-3xl p-10 max-w-2xl mx-auto">
-            <div className="space-y-6 text-left">
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full bg-black border border-white/10 rounded-xl px-5 py-4 outline-none focus:border-blue-500"
-              />
+              <span className="text-blue-300">
+                Want to collaborate on a new project
+              </span>
 
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full bg-black border border-white/10 rounded-xl px-5 py-4 outline-none focus:border-blue-500"
-              />
+              <br />
 
-              <textarea
-                rows="5"
-                placeholder="Your Message"
-                className="w-full bg-black border border-white/10 rounded-xl px-5 py-4 outline-none focus:border-blue-500"
-              />
+              <span className="text-emerald-400">
+                Or have work
+              </span>
 
-              <button className="w-full bg-blue-500 hover:bg-blue-600 transition py-4 rounded-xl font-semibold text-lg">
-                Send Message
-              </button>
-            </div>
+            </h2>
+
+            <p className="text-lg md:text-xl">
+
+              <span className="text-pink-500">
+                Contact at
+              </span>{" "}
+
+              <a
+                href="mailto:asri.4247@gmail.com"
+                className="text-emerald-400 hover:text-emerald-300 transition"
+              >
+                asri.4247@gmail.com
+              </a>
+
+            </p>
           </div>
 
-          <div className="mt-12 text-gray-500 text-sm">
-            info@rockclimbnetworks.com
-          </div>
+
         </div>
       </section >
 
       {/* Footer */}
-      < footer className="border-t border-white/10 py-8 text-center text-gray-500 text-sm" >
+      < footer className="border-t border-white/10 py-2 text-center text-gray-500 text-sm" >
         © 2026 Abhishek Srivastava.Built with React & Tailwind CSS.
       </footer >
     </div >
