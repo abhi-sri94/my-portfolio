@@ -70,14 +70,15 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 pt-32 pb-20">
+      <section className="relative overflow-hidden min-h-screen flex items-center px-6">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-3xl"></div>
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div>
             <p className="text-blue-400 uppercase tracking-[0.3em] mb-4 text-sm">
               Full Stack Developer
             </p>
 
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
               Abhishek <br /> Srivastava
             </h1>
 
@@ -129,7 +130,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold mb-12">About Me</h2>
 
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid md:grid-cols-2 gap-10 relative z-10">
             <div className="bg-zinc-900 rounded-3xl p-8 border border-white/10">
               <h3 className="text-2xl font-semibold mb-4">Who I Am</h3>
 
