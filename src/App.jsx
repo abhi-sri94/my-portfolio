@@ -100,6 +100,13 @@ export default function App() {
               >
                 Contact Me
               </a>
+              <a
+                href="/resume.pdf"
+                download
+                className="border border-white/20 hover:border-white transition px-6 py-3 rounded-2xl font-medium"
+              >
+                Download Resume
+              </a>
             </div>
           </div>
 
@@ -238,7 +245,7 @@ export default function App() {
       {/* Experience */}
       < section className="py-24 px-6 border-t border-white/10" >
         <div className="max-w-5xl mx-auto">
-          <div className="w-16 h-1 bg-blue-500 rounded-full mb-4"></div>
+
           <h2 className="text-4xl font-bold mb-14">Experience</h2>
 
           <div className="space-y-8">
