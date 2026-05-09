@@ -1,3 +1,4 @@
+import { TypeAnimation } from 'react-type-animation'
 import profilePic from './assets/abhishek.jpg'
 import SafarShareImg from './assets/SafarShare.png'
 
@@ -75,7 +76,21 @@ export default function App() {
         <div className="max-w-7xl mx-auto animate-fadeIn grid md:grid-cols-2 gap-16 items-center">
           <div>
             <p className="text-blue-400 uppercase tracking-[0.3em] mb-4 text-sm">
-              Full Stack Developer
+              <TypeAnimation
+                sequence={[
+                  'Full Stack Developer',
+                  1500,
+                  'React Developer',
+                  1500,
+                  'Startup Builder',
+                  1500,
+                  'MERN Engineer',
+                  1500,
+                ]}
+                wrapper="span"
+                speed={50}
+                repeat={Infinity}
+              />
             </p>
 
             <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
@@ -281,21 +296,7 @@ export default function App() {
 
             <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8">
               <h3 className="text-2xl font-semibold mb-2">
-                <TypeAnimation
-                  sequence={[
-                    'Full Stack Developer',
-                    1500,
-                    'React Developer',
-                    1500,
-                    'Startup Builder',
-                    1500,
-                    'MERN Engineer',
-                    1500,
-                  ]}
-                  wrapper="span"
-                  speed={50}
-                  repeat={Infinity}
-                />
+                Full Stack Developer
               </h3>
               <p className="text-gray-400">
                 Designing and developing responsive web applications and startup
