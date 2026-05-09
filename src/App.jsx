@@ -72,7 +72,7 @@ export default function App() {
       {/* Hero Section */}
       <section className="relative overflow-hidden min-h-screen flex items-center px-6">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-3xl"></div>
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto animate-fadeIn grid md:grid-cols-2 gap-16 items-center">
           <div>
             <p className="text-blue-400 uppercase tracking-[0.3em] mb-4 text-sm">
               Full Stack Developer
@@ -90,21 +90,21 @@ export default function App() {
             <div className="flex gap-4 flex-wrap">
               <a
                 href="#projects"
-                className="bg-blue-500 hover:bg-blue-600 transition px-6 py-3 rounded-2xl font-medium"
+                className="bg-blue-500 hover:bg-blue-600 transition duration-300 px-6 py-3 rounded-2xl font-medium shadow-lg hover:scale-105 hover:shadow-blue-500/40"
               >
                 View Projects
               </a>
 
               <a
                 href="#contact"
-                className="border border-white/20 hover:border-white transition px-6 py-3 rounded-2xl font-medium"
+                className="border border-white/20 hover:border-white transition duration-300 px-6 py-3 rounded-2xl font-medium shadow-lg hover:scale-105 hover:shadow-white/20"
               >
                 Contact Me
               </a>
               <a
                 href="/resume.pdf"
                 download
-                className="border border-white/20 hover:border-white transition px-6 py-3 rounded-2xl font-medium"
+                className="border border-white/20 hover:border-white transition duration-300 px-6 py-3 rounded-2xl font-medium shadow-lg hover:scale-105 hover:shadow-purple-500/30"
               >
                 Download Resume
               </a>
@@ -131,7 +131,7 @@ export default function App() {
           <h2 className="text-4xl font-bold mb-12">About Me</h2>
 
           <div className="grid md:grid-cols-2 gap-10 relative z-10">
-            <div className="bg-zinc-900 rounded-3xl p-8 border border-white/10">
+            <div className="bg-zinc-900 rounded-3xl p-8 border border-white/10 hover:border-purple-500/40 hover:-translate-y-2 transition duration-300 shadow-lg hover:shadow-purple-500/20">
               <h3 className="text-2xl font-semibold mb-4">Who I Am</h3>
 
               <p className="text-gray-400 leading-relaxed">
@@ -142,7 +142,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="bg-zinc-900 rounded-3xl p-8 border border-white/10">
+            <div className="bg-zinc-900 rounded-3xl p-8 border border-white/10 hover:border-purple-500/40 hover:-translate-y-2 transition duration-300 shadow-lg hover:shadow-purple-500/20">
               <h3 className="text-2xl font-semibold mb-4">What I Do</h3>
 
               <p className="text-gray-400 leading-relaxed">
