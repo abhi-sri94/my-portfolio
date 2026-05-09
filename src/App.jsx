@@ -112,7 +112,7 @@ export default function App() {
           </div>
 
           <div className="flex justify-center">
-            <div className="w-96 h-96 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-2xl shadow-blue-500/30">
+            <div className="w-96 h-96 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-2xl shadow-blue-500/30 animate-float">
 
               <img
                 src={profilePic}
