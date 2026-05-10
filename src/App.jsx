@@ -360,7 +360,7 @@ export default function App() {
 
       {/* Footer */}
       < footer className="border-t border-white/10 py-2 text-center text-gray-500 text-sm" >
-        © 2026 Abhishek Srivastava.Built with React & Tailwind CSS.
+        Designed & Developed by Abhishek Srivastava
       </footer >
     </div >
   );
