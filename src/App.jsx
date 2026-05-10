@@ -151,10 +151,7 @@ export default function App() {
               <h3 className="text-2xl font-semibold mb-4">Who I Am</h3>
 
               <p className="text-gray-400 leading-relaxed">
-                I am a Full Stack Developer and entrepreneur passionate about
-                building modern digital products and startup solutions. I enjoy
-                creating scalable web platforms, mobile experiences, and clean
-                user interfaces that solve real-world problems.
+                I’m a Full Stack Developer and startup builder passionate about creating scalable digital products and modern web experiences. I enjoy transforming ideas into clean, high-performance applications that solve real-world problems.
               </p>
             </div>
 
@@ -162,10 +159,7 @@ export default function App() {
               <h3 className="text-2xl font-semibold mb-4">What I Do</h3>
 
               <p className="text-gray-400 leading-relaxed">
-                I work on frontend development, backend systems, startup product
-                design, responsive web applications, and scalable architecture.
-                My focus is building products that combine performance,
-                simplicity, and real usability.
+                I specialize in frontend development, backend systems, responsive interfaces, and scalable architectures. My focus is building fast, user-friendly products with clean design, smooth performance, and real business value.
               </p>
             </div>
           </div>
