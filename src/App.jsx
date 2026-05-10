@@ -35,21 +35,6 @@ export default function App() {
     });
   };
 
-  const [showBackToTop, setShowBackToTop] = useState(false);
-
-  const toggleBackToTop = () => {
-    if (window.scrollY > 300) {
-      setShowBackToTop(true);
-    } else {
-      setShowBackToTop(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", toggleBackToTop);
-
-    return () => window.removeEventListener("scroll", toggleBackToTop);
-  }, []);
   const projects = [
     {
 
