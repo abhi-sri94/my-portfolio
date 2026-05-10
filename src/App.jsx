@@ -1,3 +1,5 @@
+import { ChevronUp } from "lucide-react";
+import { useEffect, useState } from "react";
 import { TypeAnimation } from 'react-type-animation'
 import profilePic from './assets/abhishek.jpg'
 import SafarShareImg from './assets/SafarShare.png'
@@ -10,6 +12,44 @@ import rockclimb1 from './assets/rockclimb1.png'
 import rockclimb2 from './assets/rockclimb2.png'
 import rockclimb3 from './assets/rockclimb3.png'
 export default function App() {
+  const [showScroll, setShowScroll] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScroll(true);
+      } else {
+        setShowScroll(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  const toggleBackToTop = () => {
+    if (window.scrollY > 300) {
+      setShowBackToTop(true);
+    } else {
+      setShowBackToTop(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleBackToTop);
+
+    return () => window.removeEventListener("scroll", toggleBackToTop);
+  }, []);
   const projects = [
     {
 
@@ -356,6 +396,14 @@ export default function App() {
       < footer className="border-t border-white/10 py-2 text-center text-gray-500 text-sm" >
         Designed & Developed by Abhishek Srivastava
       </footer >
+      {showScroll && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-purple-500 to-cyan-400 p-4 rounded-full shadow-lg shadow-purple-500/30 hover:scale-110 transition duration-300"
+        >
+          <ChevronUp className="w-6 h-6 text-white" />
+        </button>
+      )}
     </div >
   );
 }
