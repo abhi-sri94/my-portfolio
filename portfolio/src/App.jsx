@@ -1,3 +1,5 @@
+import { ChevronUp } from "lucide-react";
+import { useEffect, useState } from "react";
 import { TypeAnimation } from 'react-type-animation'
 import profilePic from './assets/abhishek.jpg'
 import SafarShareImg from './assets/SafarShare.png'
@@ -10,7 +12,38 @@ import rockclimb1 from './assets/rockclimb1.png'
 import rockclimb2 from './assets/rockclimb2.png'
 import rockclimb3 from './assets/rockclimb3.png'
 export default function App() {
+  const [showScroll, setShowScroll] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScroll(true);
+      } else {
+        setShowScroll(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   const projects = [
+    {
+      title: 'InterviewIQ',
+      description: 'An AI-powered technical interview simulator. Uses Google Gemini AI and remote containerized code execution to provide realistic, pressure-tested coding rounds and behavioral interviews with real-time speech-to-text.',
+      tech: ['React', 'Node.js', 'Express', 'Gemini AI', 'Tailwind CSS'],
+      live: 'https://interviewiq-frontend-ten.vercel.app/',
+      github: 'https://github.com/abhi-sri94/interviewiq-backend',
+      images: [],
+    },
     {
 
       title: 'SafarShare',
@@ -151,10 +184,7 @@ export default function App() {
               <h3 className="text-2xl font-semibold mb-4">Who I Am</h3>
 
               <p className="text-gray-400 leading-relaxed">
-                I am a Full Stack Developer and entrepreneur passionate about
-                building modern digital products and startup solutions. I enjoy
-                creating scalable web platforms, mobile experiences, and clean
-                user interfaces that solve real-world problems.
+                I’m a Full Stack Developer and startup builder passionate about creating scalable digital products and modern web experiences. I enjoy transforming ideas into clean, high-performance applications that solve real-world problems.
               </p>
             </div>
 
@@ -162,10 +192,7 @@ export default function App() {
               <h3 className="text-2xl font-semibold mb-4">What I Do</h3>
 
               <p className="text-gray-400 leading-relaxed">
-                I work on frontend development, backend systems, startup product
-                design, responsive web applications, and scalable architecture.
-                My focus is building products that combine performance,
-                simplicity, and real usability.
+                I specialize in frontend development, backend systems, responsive interfaces, and scalable architectures. My focus is building fast, user-friendly products with clean design, smooth performance, and real business value.
               </p>
             </div>
           </div>
@@ -336,10 +363,6 @@ export default function App() {
 
               <br />
 
-              <span className="text-emerald-400">
-                Or have work
-              </span>
-
             </h2>
 
             <p className="text-lg md:text-xl">
@@ -364,8 +387,16 @@ export default function App() {
 
       {/* Footer */}
       < footer className="border-t border-white/10 py-2 text-center text-gray-500 text-sm" >
-        © 2026 Abhishek Srivastava.Built with React & Tailwind CSS.
+        Designed & Developed by Abhishek Srivastava
       </footer >
+      {showScroll && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-purple-500 to-cyan-400 p-4 rounded-full shadow-lg shadow-purple-500/30 hover:scale-110 transition duration-300"
+        >
+          <ChevronUp className="w-6 h-6 text-white" />
+        </button>
+      )}
     </div >
   );
 }
