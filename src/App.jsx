@@ -158,10 +158,11 @@ export default function App() {
               </a>
               <a
                 href="/resume.pdf"
-                download
+                target="_blank"
+                rel="noopener noreferrer"
                 className="border border-white/20 hover:border-white transition duration-300 px-6 py-3 rounded-2xl font-medium shadow-lg hover:scale-105 hover:shadow-purple-500/30"
               >
-                Download Resume
+                View Resume
               </a>
             </div>
           </div>
