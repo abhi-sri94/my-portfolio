@@ -11,6 +11,12 @@ import Dayli3 from './assets/Dayli3.png'
 import rockclimb1 from './assets/rockclimb1.png'
 import rockclimb2 from './assets/rockclimb2.png'
 import rockclimb3 from './assets/rockclimb3.png'
+
+import interview1 from '../portfolio/src/assets/interview1.png'
+import interview2 from '../portfolio/src/assets/interview2.png'
+import interview3 from '../portfolio/src/assets/interview3.png'
+import interview4 from '../portfolio/src/assets/interview4.png'
+
 export default function App() {
   const [showScroll, setShowScroll] = useState(false);
 
@@ -36,6 +42,14 @@ export default function App() {
   };
 
   const projects = [
+    {
+      title: 'InterviewIQ',
+      description: 'An AI-powered technical interview simulator. Uses Google Gemini AI and remote containerized code execution to provide realistic, pressure-tested coding rounds and behavioral interviews with real-time speech-to-text.',
+      tech: ['React', 'Node.js', 'Express', 'Gemini AI', 'Tailwind CSS'],
+      live: 'https://interviewiq-frontend-ten.vercel.app/',
+      github: 'https://github.com/abhi-sri94/interviewiq-backend',
+      images: [interview1, interview2, interview3, interview4],
+    },
     {
 
       title: 'SafarShare',
