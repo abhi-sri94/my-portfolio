@@ -12,10 +12,11 @@ import rockclimb1 from './assets/rockclimb1.png'
 import rockclimb2 from './assets/rockclimb2.png'
 import rockclimb3 from './assets/rockclimb3.png'
 
-import interview1 from '../portfolio/src/assets/interview1.png'
-import interview2 from '../portfolio/src/assets/interview2.png'
-import interview3 from '../portfolio/src/assets/interview3.png'
-import interview4 from '../portfolio/src/assets/interview4.png'
+import interviewiq1 from './assets/interviewiq1.png'
+import interviewiq3 from './assets/interviewiq3.png'
+import interviewiq4 from './assets/interviewiq4.png'
+import interviewiq5 from './assets/interviewiq5.png'
+import interviewiq6 from './assets/interviewiq6.png'
 
 import resumePdf from '../portfolio/public/my_updated_profile.pdf'
 
@@ -50,7 +51,7 @@ export default function App() {
       tech: ['React', 'Node.js', 'Express', 'Gemini AI', 'Tailwind CSS'],
       live: 'https://interviewiq-frontend-ten.vercel.app/',
       github: 'https://github.com/abhi-sri94/interviewiq-backend',
-      images: [interview1, interview2, interview3, interview4],
+      images: [interviewiq1, interviewiq3, interviewiq4, interviewiq5, interviewiq6],
     },
     {
 
