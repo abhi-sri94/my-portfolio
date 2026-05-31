@@ -100,7 +100,7 @@ export default function App() {
     <div className="bg-black text-white min-h-screen w-full overflow-x-hidden">
       {/* Navbar */}
       <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/40 border-b border-white/10">
-        <div className="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-10 py-4 sm:py-6">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-0 px-4 sm:px-10 py-4 sm:py-6">
           <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }}>
             <h1 className="text-xl sm:text-3xl font-extrabold tracking-tight hover:text-gray-300 transition">Abhishek.</h1>
           </a>
@@ -185,7 +185,7 @@ export default function App() {
       </section >
 
       {/* About Section */}
-      < section id="about" className="py-20 sm:py-24 px-4 sm:px-6 border-t border-white/10 scroll-mt-20" >
+      < section id="about" className="py-20 sm:py-24 px-4 sm:px-6 border-t border-white/10 scroll-mt-28 sm:scroll-mt-20" >
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold mb-12">About Me</h2>
 
@@ -212,7 +212,7 @@ export default function App() {
       {/* Projects */}
       < section
         id="projects"
-        className="py-20 sm:py-24 px-4 sm:px-6 border-t border-white/10 scroll-mt-20"
+        className="py-20 sm:py-24 px-4 sm:px-6 border-t border-white/10 scroll-mt-28 sm:scroll-mt-20"
       >
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold mb-14">Featured Projects</h2>
@@ -288,7 +288,7 @@ export default function App() {
       </section >
 
       {/* Skills */}
-      < section id="skills" className="py-20 sm:py-24 px-4 sm:px-6 border-t border-white/10 scroll-mt-20" >
+      < section id="skills" className="py-20 sm:py-24 px-4 sm:px-6 border-t border-white/10 scroll-mt-28 sm:scroll-mt-20" >
         <div className="max-w-6xl mx-auto">
           <h2 className="text-5xl font-bold text-center mb-16 tracking-wide">
             <span className="text-teal-300">tech</span>
@@ -318,7 +318,7 @@ export default function App() {
       </section >
 
       {/* Experience */}
-      < section className="py-20 sm:py-24 px-4 sm:px-6 border-t border-white/10 scroll-mt-20" >
+      < section className="py-20 sm:py-24 px-4 sm:px-6 border-t border-white/10 scroll-mt-28 sm:scroll-mt-20" >
         <div className="max-w-5xl mx-auto">
 
           <h2 className="text-4xl font-bold mb-14">Experience</h2>
@@ -409,7 +409,7 @@ export default function App() {
       {/* Contact */}
       < section
         id="contact"
-        className="py-20 sm:py-28 px-4 sm:px-6 border-t border-white/10 scroll-mt-20"
+        className="py-20 sm:py-28 px-4 sm:px-6 border-t border-white/10 scroll-mt-28 sm:scroll-mt-20"
       >
         <div className="max-w-4xl mx-auto text-center">
 
