@@ -115,7 +115,7 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-screen flex items-center px-6 pt-28 pb-16 md:py-0">
+      <section className="relative overflow-hidden min-h-[75vh] lg:min-h-screen flex items-center px-6 pt-28 pb-16 lg:py-0">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-3xl"></div>
         <div className="max-w-7xl mx-auto animate-fadeIn grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div>
