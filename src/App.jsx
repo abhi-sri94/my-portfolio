@@ -137,7 +137,7 @@ export default function App() {
               />
             </p>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
               Abhishek <span className="block sm:inline">Srivastava</span>
             </h1>
 
@@ -171,7 +171,7 @@ export default function App() {
           </div>
 
           <div className="flex justify-center">
-            <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-2xl shadow-blue-500/30 animate-float">
+            <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-72 md:h-72 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-2xl shadow-blue-500/30 animate-float">
 
               <img
                 src={profilePic}
@@ -190,7 +190,7 @@ export default function App() {
           <h2 className="text-4xl font-bold mb-12">About Me</h2>
 
           <div className="grid md:grid-cols-2 gap-6 md:gap-10 relative z-10">
-            <div className="bg-zinc-900 rounded-3xl p-6 sm:p-8 border border-white/10 hover:border-purple-500/40 hover:-translate-y-2 transition duration-300 shadow-lg hover:shadow-purple-500/20">
+            <div className="bg-zinc-900 rounded-3xl p-6 lg:p-8 border border-white/10 hover:border-purple-500/40 hover:-translate-y-2 transition duration-300 shadow-lg hover:shadow-purple-500/20">
               <h3 className="text-2xl font-semibold mb-4">Who I Am</h3>
 
               <p className="text-gray-400 leading-relaxed">
@@ -198,7 +198,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="bg-zinc-900 rounded-3xl p-6 sm:p-8 border border-white/10 hover:border-purple-500/40 hover:-translate-y-2 transition duration-300 shadow-lg hover:shadow-purple-500/20">
+            <div className="bg-zinc-900 rounded-3xl p-6 lg:p-8 border border-white/10 hover:border-purple-500/40 hover:-translate-y-2 transition duration-300 shadow-lg hover:shadow-purple-500/20">
               <h3 className="text-2xl font-semibold mb-4">What I Do</h3>
 
               <p className="text-gray-400 leading-relaxed">
@@ -221,7 +221,7 @@ export default function App() {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="bg-zinc-900 border border-white/10 rounded-3xl p-5 sm:p-6 md:p-8 hover:border-blue-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 transition duration-300"
+                className="bg-zinc-900 border border-white/10 rounded-3xl p-5 sm:p-6 lg:p-8 hover:border-blue-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 transition duration-300"
               >
                 <div className="project-gallery flex gap-3 overflow-x-auto snap-x snap-mandatory mb-6 pb-2 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
                   {project.images?.map((img, idx) => (
@@ -229,7 +229,7 @@ export default function App() {
                       key={idx}
                       className={`snap-center shrink-0 ${
                         project.images.length > 1
-                          ? "w-[85%] sm:w-[75%] md:w-full"
+                          ? "w-[85%] sm:w-[75%] lg:w-full"
                           : "w-full"
                       }`}
                     >
@@ -296,7 +296,7 @@ export default function App() {
             <span className="text-blue-200">skills</span>
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
             {skills.map((skill, index) => (
               <div
                 key={index}
@@ -414,7 +414,7 @@ export default function App() {
         <div className="max-w-4xl mx-auto text-center">
 
           <div className="mt-16">
-            <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight mb-10">
+            <h2 className="text-3xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-10">
 
               <span className="text-blue-300">
                 Want to collaborate on a new project
