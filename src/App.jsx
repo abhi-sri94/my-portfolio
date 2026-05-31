@@ -392,7 +392,7 @@ export default function App() {
                   </p>
                 </div>
                 <span className="bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-sm text-gray-300 font-medium inline-block w-fit">
-                  2022 - 2024
+                  2022 - Present
                 </span>
               </div>
               <p className="text-gray-400 leading-relaxed">
