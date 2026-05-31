@@ -101,7 +101,9 @@ export default function App() {
       {/* Navbar */}
       <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/40 border-b border-white/10">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-10 py-4 sm:py-6">
-          <h1 className="text-xl sm:text-3xl font-extrabold tracking-tight">Abhishek.</h1>
+          <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }}>
+            <h1 className="text-xl sm:text-3xl font-extrabold tracking-tight hover:text-gray-300 transition">Abhishek.</h1>
+          </a>
 
           <div className="flex gap-4 sm:gap-6 md:gap-10 text-sm sm:text-base md:text-lg font-medium text-gray-300">
             <a href="#about" className="hover:text-white transition">About</a>
