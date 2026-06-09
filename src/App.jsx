@@ -18,7 +18,6 @@ import interviewiq4 from './assets/interviewiq4.png'
 import interviewiq5 from './assets/interviewiq5.png'
 import interviewiq6 from './assets/interviewiq6.png'
 
-import resumePdf from '../portfolio/public/my_updated_profile.pdf'
 
 export default function App() {
   const [showScroll, setShowScroll] = useState(false);
@@ -160,7 +159,7 @@ export default function App() {
                 Contact Me
               </a>
               <a
-                href={resumePdf}
+                href="/abhishek_updated_profile.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border border-white/20 hover:border-white transition duration-300 px-6 py-3 rounded-2xl font-medium shadow-lg hover:scale-105 hover:shadow-purple-500/30"
