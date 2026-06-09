@@ -8,6 +8,9 @@ import SafarShareImg from './assets/SafarShare.png'
 import Dayli1 from './assets/Dayli1.png'
 import Dayli2 from './assets/Dayli2.png'
 import Dayli3 from './assets/Dayli3.png'
+import dayli4 from './assets/dayli4.png'
+import dayli5 from './assets/dayli5.png'
+import dayli6 from './assets/dayli6.png'
 
 import rockclimb1 from './assets/rockclimb1.png'
 import rockclimb2 from './assets/rockclimb2.png'
@@ -68,7 +71,7 @@ export default function App() {
       tech: ['React', 'Firebase', 'Tailwind CSS'],
       live: 'https://dayli.co.in',
       github: 'https://github.com/abhi-sri94',
-      images: [Dayli1, Dayli2, Dayli3],
+      images: [Dayli1, Dayli2, Dayli3, dayli4, dayli5, dayli6],
     },
     {
       title: 'Rockclimb Networks',
