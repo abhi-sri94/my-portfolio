@@ -1,3 +1,4 @@
+// Force rebuild for PDF metadata update
 import { ChevronUp } from "lucide-react";
 import { useEffect, useState } from "react";
 import { TypeAnimation } from 'react-type-animation'
