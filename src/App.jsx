@@ -5,9 +5,9 @@ import { TypeAnimation } from 'react-type-animation'
 import profilePic from './assets/abhishek.jpg'
 import SafarShareImg from './assets/SafarShare.png'
 
-import Dayli1 from './assets/Dayli1.png'
-import Dayli2 from './assets/Dayli2.png'
-import Dayli3 from './assets/Dayli3.png'
+import Dayli1 from './assets/dayli1.png'
+import Dayli2 from './assets/dayli2.png'
+import Dayli3 from './assets/dayli3.png'
 import dayli4 from './assets/dayli4.png'
 import dayli5 from './assets/dayli5.png'
 import dayli6 from './assets/dayli6.png'
@@ -21,6 +21,7 @@ import interviewiq3 from './assets/interviewiq3.png'
 import interviewiq4 from './assets/interviewiq4.png'
 import interviewiq5 from './assets/interviewiq5.png'
 import interviewiq6 from './assets/interviewiq6.png'
+import gitvisual1 from './assets/gitvisual1.png'
 
 
 export default function App() {
@@ -57,6 +58,14 @@ export default function App() {
       images: [interviewiq1, interviewiq3, interviewiq4, interviewiq5, interviewiq6],
     },
     {
+      title: 'Git-Visual',
+      description: 'An interactive full-stack MERN cyberpunk-themed Git branching simulator. Users type real git commands to visualize branch states, complete tutorial hacks, and save progress.',
+      tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
+      live: 'https://git-visual.onrender.com/',
+      github: 'https://github.com/abhi-sri94/git-visual',
+      images: [gitvisual1],
+    },
+    {
 
       title: 'SafarShare',
       description: 'India-focused ride-sharing platform designed to improve passenger safety, smart ride management, and reliable intercity travel experiences.',
@@ -71,7 +80,7 @@ export default function App() {
       tech: ['React', 'Firebase', 'Tailwind CSS'],
       live: 'https://dayli.co.in',
       github: 'https://github.com/abhi-sri94',
-      images: [Dayli1, Dayli2, Dayli3, dayli4, dayli5, dayli6],
+      images: [dayli1, dayli2, dayli3, dayli4, dayli5, dayli6],
     },
     {
       title: 'Rockclimb Networks',
