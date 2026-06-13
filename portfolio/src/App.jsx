@@ -12,10 +12,13 @@ import rockclimb1 from './assets/rockclimb1.png'
 import rockclimb2 from './assets/rockclimb2.png'
 import rockclimb3 from './assets/rockclimb3.png'
 
-import interview1 from './assets/interview1.png'
-import interview2 from './assets/interview2.png'
-import interview3 from './assets/interview3.png'
-import interview4 from './assets/interview4.png'
+import interviewiq1 from './assets/interviewiq1.png'
+import interviewiq3 from './assets/interviewiq3.png'
+import interviewiq4 from './assets/interviewiq4.png'
+import interviewiq5 from './assets/interviewiq5.png'
+import interviewiq6 from './assets/interviewiq6.png'
+
+import resumePdf from '../public/my_updated_profile.pdf'
 
 export default function App() {
   const [showScroll, setShowScroll] = useState(false);
@@ -48,7 +51,7 @@ export default function App() {
       tech: ['React', 'Node.js', 'Express', 'Gemini AI', 'Tailwind CSS'],
       live: 'https://interviewiq-frontend-ten.vercel.app/',
       github: 'https://github.com/abhi-sri94/interviewiq-backend',
-      images: [interview1, interview2, interview3, interview4],
+      images: [interviewiq1, interviewiq3, interviewiq4, interviewiq5, interviewiq6],
     },
     {
 
@@ -97,10 +100,10 @@ export default function App() {
     <div className="bg-black text-white min-h-screen w-full overflow-x-hidden">
       {/* Navbar */}
       <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/40 border-b border-white/10">
-        <div className="max-w-7xl mx-auto flex justify-between items-center px-10 py-6">
-          <h1 className="text-3xl font-extrabold tracking-tight">Abhishek.</h1>
+        <div className="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-10 py-4 sm:py-6">
+          <h1 className="text-xl sm:text-3xl font-extrabold tracking-tight">Abhishek.</h1>
 
-          <div className="hidden md:flex gap-10 text-lg font-medium text-gray-300">
+          <div className="flex gap-3 sm:gap-6 md:gap-10 text-xs sm:text-base md:text-lg font-medium text-gray-300">
             <a href="#about" className="hover:text-white transition">About</a>
             <a href="#projects" className="hover:text-white transition">Projects</a>
             <a href="#skills" className="hover:text-white transition">Skills</a>
@@ -110,7 +113,7 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-screen flex items-center px-6">
+      <section className="relative overflow-hidden min-h-screen flex items-center px-6 pt-28 md:pt-0">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-3xl"></div>
         <div className="max-w-7xl mx-auto animate-fadeIn grid md:grid-cols-2 gap-16 items-center">
           <div>
@@ -132,11 +135,11 @@ export default function App() {
               />
             </p>
 
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
               Abhishek <br /> Srivastava
             </h1>
 
-            <p className="text-gray-300 text-xl leading-loose max-w-2xl mb-8">
+            <p className="text-gray-300 text-base sm:text-xl leading-loose max-w-2xl mb-8">
               Full Stack Developer & Startup Builder.<br />
               Creating scalable platforms, modern interfaces,<br />
               and real-world digital solutions.
@@ -157,17 +160,18 @@ export default function App() {
                 Contact Me
               </a>
               <a
-                href="/resume.pdf"
-                download
+                href={resumePdf}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="border border-white/20 hover:border-white transition duration-300 px-6 py-3 rounded-2xl font-medium shadow-lg hover:scale-105 hover:shadow-purple-500/30"
               >
-                Download Resume
+                View Resume
               </a>
             </div>
           </div>
 
           <div className="flex justify-center">
-            <div className="w-96 h-96 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-2xl shadow-blue-500/30 animate-float">
+            <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-2xl shadow-blue-500/30 animate-float">
 
               <img
                 src={profilePic}
@@ -217,7 +221,7 @@ export default function App() {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="bg-zinc-900 border border-white/10 rounded-3xl p-8 hover:border-blue-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 transition duration-300"
+                className="bg-zinc-900 border border-white/10 rounded-3xl p-5 sm:p-8 hover:border-blue-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 transition duration-300"
               >
                 <div className="grid grid-cols-1 gap-3 mb-6 max-h-[420px] overflow-y-auto pr-1">
                   {project.images?.map((img, index) => (
@@ -311,7 +315,7 @@ export default function App() {
           <h2 className="text-4xl font-bold mb-14">Experience</h2>
 
           <div className="space-y-8">
-            <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8">
+            <div className="bg-zinc-900 border border-white/10 rounded-3xl p-5 sm:p-8">
               <h3 className="text-2xl font-semibold mb-2">
                 Founder & Developer — Rockclimb Networks (2024 - Present)
               </h3>
@@ -321,7 +325,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8">
+            <div className="bg-zinc-900 border border-white/10 rounded-3xl p-5 sm:p-8">
               <h3 className="text-2xl font-semibold mb-2">
                 Founder & Developer — SafarShare (In Development)
               </h3>
@@ -331,7 +335,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8">
+            <div className="bg-zinc-900 border border-white/10 rounded-3xl p-5 sm:p-8">
               <h3 className="text-2xl font-semibold mb-2">
                 Founder & Developer — Dayli Delivery (In Development)
               </h3>
@@ -340,7 +344,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8">
+            <div className="bg-zinc-900 border border-white/10 rounded-3xl p-5 sm:p-8">
               <h3 className="text-2xl font-semibold mb-2">
                 Full Stack Developer
               </h3>
@@ -361,7 +365,7 @@ export default function App() {
         <div className="max-w-4xl mx-auto text-center">
 
           <div className="mt-16">
-            <h2 className="text-5xl md:text-7xl font-bold leading-tight mb-10">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight mb-10">
 
               <span className="text-blue-300">
                 Want to collaborate on a new project

@@ -86,7 +86,7 @@ export default function App() {
       title: 'Rockclimb Networks',
       description: 'A digital solutions company website showcasing services like web development, app development, hosting, digital marketing, and IT security solutions.',
       tech: ['React', 'Web Development', 'Hosting'],
-      live: 'https://rockclimbnetworks.com',
+      live: 'https://rockclimbnetworks.netlify.app/',
       github: 'https://github.com/abhi-sri94/rcn-website',
       images: [rockclimb1, rockclimb2, rockclimb3],
     },
@@ -239,11 +239,10 @@ export default function App() {
                   {project.images?.map((img, idx) => (
                     <div
                       key={idx}
-                      className={`snap-center shrink-0 ${
-                        project.images.length > 1
-                          ? "w-[85%] sm:w-[75%] lg:w-full"
-                          : "w-full"
-                      }`}
+                      className={`snap-center shrink-0 ${project.images.length > 1
+                        ? "w-[85%] sm:w-[75%] lg:w-full"
+                        : "w-full"
+                        }`}
                     >
                       <img
                         key={idx}
