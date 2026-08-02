@@ -12,7 +12,9 @@ import {
   MessageSquare,
   Calendar,
   Sparkles,
-  MapPin
+  MapPin,
+  Menu,
+  X
 } from "lucide-react";
 
 function Github({ className }) {
@@ -95,6 +97,7 @@ export default function App() {
   const [selectedCaseStudy, setSelectedCaseStudy] = useState(null);
   const [showAllExperience, setShowAllExperience] = useState(false);
   const [showMobileCalculator, setShowMobileCalculator] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Project Planner State
   const [projectType, setProjectType] = useState("mvp"); // mvp, saas, performance
@@ -502,14 +505,77 @@ export default function App() {
             <a href="#contact" className="hover:text-white transition">Contact</a>
           </div>
 
-          <a
-            href="#estimator"
-            className="hidden sm:inline-flex items-center gap-1.5 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700/60 hover:border-zinc-600 text-white text-xs sm:text-sm font-semibold py-2 px-4 rounded-xl transition duration-300 shadow-sm"
-          >
-            <Calendar className="w-4 h-4 text-blue-400" />
-            Schedule Free Consultation
-          </a>
+          <div className="flex items-center gap-4">
+            <a
+              href="#estimator"
+              className="hidden sm:inline-flex items-center gap-1.5 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700/60 hover:border-zinc-600 text-white text-xs sm:text-sm font-semibold py-2 px-4 rounded-xl transition duration-300 shadow-sm"
+            >
+              <Calendar className="w-4 h-4 text-blue-400" />
+              Schedule Free Consultation
+            </a>
+
+            {/* Mobile menu trigger */}
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="flex md:hidden text-zinc-400 hover:text-white p-1.5 transition duration-200 focus:outline-none"
+              aria-label="Toggle Menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Menu Panel */}
+        {mobileMenuOpen && (
+          <div className="md:hidden w-full bg-zinc-950/95 backdrop-blur-lg border-b border-zinc-900 animate-fadeIn">
+            <div className="flex flex-col px-6 py-6 space-y-4 text-base font-semibold text-zinc-300">
+              <a 
+                href="#services" 
+                onClick={() => setMobileMenuOpen(false)} 
+                className="hover:text-white transition py-2 border-b border-zinc-900/50"
+              >
+                Services
+              </a>
+              <a 
+                href="#projects" 
+                onClick={() => setMobileMenuOpen(false)} 
+                className="hover:text-white transition py-2 border-b border-zinc-900/50"
+              >
+                Projects
+              </a>
+              <a 
+                href="#process" 
+                onClick={() => setMobileMenuOpen(false)} 
+                className="hover:text-white transition py-2 border-b border-zinc-900/50"
+              >
+                Process
+              </a>
+              <a 
+                href="#estimator" 
+                onClick={() => setMobileMenuOpen(false)} 
+                className="hover:text-white transition py-2 border-b border-zinc-900/50"
+              >
+                Cost Calculator
+              </a>
+              <a 
+                href="#contact" 
+                onClick={() => setMobileMenuOpen(false)} 
+                className="hover:text-white transition py-2 border-b border-zinc-900/50"
+              >
+                Contact
+              </a>
+              
+              <a
+                href="#estimator"
+                onClick={() => setMobileMenuOpen(false)}
+                className="inline-flex items-center justify-center gap-1.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-white text-sm font-semibold py-3 px-4 rounded-xl transition duration-300 w-full"
+              >
+                <Calendar className="w-4 h-4 text-blue-400" />
+                Schedule Free Consultation
+              </a>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
