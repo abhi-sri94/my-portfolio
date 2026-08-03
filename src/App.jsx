@@ -300,10 +300,10 @@ export default function App() {
     setIsSubmitting(true);
     setSubmitError(null);
 
-    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "";
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "271d54b0-09da-41e7-bd0a-e6ffb5e11173";
 
     // If no access key is configured in env, fallback to mailto client-side flow
-    if (!accessKey || accessKey === "YOUR_WEB3FORMS_ACCESS_KEY_HERE") {
+    if (!accessKey) {
       const subject = encodeURIComponent(`New Project Brief: ${projectType.toUpperCase()} Proposal`);
       const body = encodeURIComponent(
         `Hi Abhishek,\n\nI just submitted a project proposal on your portfolio website with these selections:\n\n` +
