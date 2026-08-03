@@ -315,8 +315,8 @@ export default function App() {
               type="button"
               onClick={() => setProjectType(item.val)}
               className={`p-4 rounded-2xl text-left border transition ${projectType === item.val
-                  ? "bg-blue-500/5 border-blue-500 text-white"
-                  : "bg-zinc-900/50 border-zinc-850 text-zinc-400 hover:border-zinc-800"
+                ? "bg-blue-500/5 border-blue-500 text-white"
+                : "bg-zinc-900/50 border-zinc-850 text-zinc-400 hover:border-zinc-800"
                 }`}
             >
               <p className="font-bold text-sm text-zinc-200">{item.title}</p>
@@ -342,8 +342,8 @@ export default function App() {
               type="button"
               onClick={() => setProjectScope(item.val)}
               className={`p-4 rounded-2xl text-left border transition ${projectScope === item.val
-                  ? "bg-blue-500/5 border-blue-500 text-white"
-                  : "bg-zinc-900/50 border-zinc-850 text-zinc-400 hover:border-zinc-800"
+                ? "bg-blue-500/5 border-blue-500 text-white"
+                : "bg-zinc-900/50 border-zinc-850 text-zinc-400 hover:border-zinc-800"
                 }`}
             >
               <p className="font-bold text-sm text-zinc-200">{item.title}</p>
@@ -369,8 +369,8 @@ export default function App() {
               type="button"
               onClick={() => setProjectTimeline(item.val)}
               className={`p-4 rounded-2xl text-left border transition ${projectTimeline === item.val
-                  ? "bg-blue-500/5 border-blue-500 text-white"
-                  : "bg-zinc-900/50 border-zinc-850 text-zinc-400 hover:border-zinc-800"
+                ? "bg-blue-500/5 border-blue-500 text-white"
+                : "bg-zinc-900/50 border-zinc-850 text-zinc-400 hover:border-zinc-800"
                 }`}
             >
               <p className="font-bold text-sm text-zinc-200">{item.title}</p>
@@ -503,13 +503,13 @@ export default function App() {
             <a href="#process" className="hover:text-white transition">Process</a>
             <a href="#estimator" className="hover:text-white transition">Cost Calculator</a>
             <a href="#contact" className="hover:text-white transition">Contact</a>
-            <a 
-              href="/abhishek_updated_profile.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="/abhishek_updated_profile.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-white transition flex items-center gap-1"
             >
-              Resume
+              View Resume
               <ExternalLink className="w-3.5 h-3.5 text-zinc-500" />
             </a>
           </div>
@@ -524,7 +524,7 @@ export default function App() {
             </a>
 
             {/* Mobile menu trigger */}
-            <button 
+            <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="flex md:hidden text-zinc-400 hover:text-white p-1.5 transition duration-200 focus:outline-none"
               aria-label="Toggle Menu"
@@ -538,52 +538,52 @@ export default function App() {
         {mobileMenuOpen && (
           <div className="md:hidden w-full bg-zinc-950/95 backdrop-blur-lg border-b border-zinc-900 animate-fadeIn">
             <div className="flex flex-col px-6 py-6 space-y-4 text-base font-semibold text-zinc-300">
-              <a 
-                href="#services" 
-                onClick={() => setMobileMenuOpen(false)} 
+              <a
+                href="#services"
+                onClick={() => setMobileMenuOpen(false)}
                 className="hover:text-white transition py-2 border-b border-zinc-900/50"
               >
                 Services
               </a>
-              <a 
-                href="#projects" 
-                onClick={() => setMobileMenuOpen(false)} 
+              <a
+                href="#projects"
+                onClick={() => setMobileMenuOpen(false)}
                 className="hover:text-white transition py-2 border-b border-zinc-900/50"
               >
                 Projects
               </a>
-              <a 
-                href="#process" 
-                onClick={() => setMobileMenuOpen(false)} 
+              <a
+                href="#process"
+                onClick={() => setMobileMenuOpen(false)}
                 className="hover:text-white transition py-2 border-b border-zinc-900/50"
               >
                 Process
               </a>
-              <a 
-                href="#estimator" 
-                onClick={() => setMobileMenuOpen(false)} 
+              <a
+                href="#estimator"
+                onClick={() => setMobileMenuOpen(false)}
                 className="hover:text-white transition py-2 border-b border-zinc-900/50"
               >
                 Cost Calculator
               </a>
-              <a 
-                href="#contact" 
-                onClick={() => setMobileMenuOpen(false)} 
+              <a
+                href="#contact"
+                onClick={() => setMobileMenuOpen(false)}
                 className="hover:text-white transition py-2 border-b border-zinc-900/50"
               >
                 Contact
               </a>
-              <a 
-                href="/abhishek_updated_profile.pdf" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                onClick={() => setMobileMenuOpen(false)} 
+              <a
+                href="/abhishek_updated_profile.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
                 className="hover:text-white transition py-2 border-b border-zinc-900/50 flex items-center justify-between"
               >
-                <span>Resume</span>
+                <span>View Resume</span>
                 <ExternalLink className="w-4 h-4 text-zinc-500" />
               </a>
-              
+
               <a
                 href="#estimator"
                 onClick={() => setMobileMenuOpen(false)}
@@ -616,14 +616,14 @@ export default function App() {
                   Delhi, India ➔ Serving Clients Globally
                 </div>
               </div>
-              
+
               {/* Mobile-only avatar - increased size, top aligned and floating */}
               <div className="lg:hidden shrink-0 ml-4 relative -translate-y-1 translate-x-1 animate-micro-float">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 blur-md opacity-30"></div>
                 <div className="h-20 w-20 rounded-full p-0.5 bg-gradient-to-br from-blue-500 via-transparent to-purple-600">
-                  <img 
-                    src={profilePic} 
-                    alt="Abhishek Srivastava portrait" 
+                  <img
+                    src={profilePic}
+                    alt="Abhishek Srivastava portrait"
                     className="h-full w-full rounded-full object-cover border border-zinc-800"
                   />
                 </div>
@@ -890,8 +890,8 @@ export default function App() {
                       GitHub
                     </a>
                   </div>
-                  
-                  <button 
+
+                  <button
                     onClick={() => setSelectedCaseStudy(project)}
                     className="lg:hidden w-full sm:w-auto inline-flex items-center justify-center gap-1 border border-zinc-800 hover:border-zinc-700 bg-zinc-950 hover:bg-zinc-900 text-blue-400 hover:text-blue-300 text-xs font-bold py-2.5 px-4 rounded-xl transition duration-200"
                   >
@@ -971,7 +971,7 @@ export default function App() {
                 <p className="text-zinc-400 text-xs mb-6 leading-relaxed">
                   Select your specifications to calculate an instant budget estimation range. Zero guesswork, immediate pricing alignment.
                 </p>
-                <button 
+                <button
                   onClick={() => setShowMobileCalculator(true)}
                   className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-3.5 rounded-xl text-sm shadow-lg transition"
                 >
@@ -981,7 +981,7 @@ export default function App() {
             ) : (
               <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md overflow-y-auto">
                 <div className="bg-zinc-950 border border-zinc-850 rounded-3xl w-full max-w-md p-5 relative my-8 max-h-[90vh] overflow-y-auto space-y-6">
-                  <button 
+                  <button
                     onClick={() => setShowMobileCalculator(false)}
                     className="absolute top-4 right-4 h-8 w-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white"
                   >
@@ -1065,11 +1065,10 @@ export default function App() {
             ].map((exp, eidx) => {
               const isHiddenOnMobile = eidx > 0 && !showAllExperience;
               return (
-                <div 
-                  key={eidx} 
-                  className={`bg-zinc-950 border border-zinc-850/80 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row md:justify-between md:items-start gap-4 hover:border-zinc-800 transition ${
-                    isHiddenOnMobile ? "hidden md:flex" : "flex"
-                  }`}
+                <div
+                  key={eidx}
+                  className={`bg-zinc-950 border border-zinc-850/80 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row md:justify-between md:items-start gap-4 hover:border-zinc-800 transition ${isHiddenOnMobile ? "hidden md:flex" : "flex"
+                    }`}
                 >
                   <div className="space-y-2">
                     <h3 className="text-lg sm:text-xl font-bold text-white">{exp.role}</h3>
@@ -1086,7 +1085,7 @@ export default function App() {
 
           {/* Toggle Experience Button on Mobile */}
           <div className="flex justify-center mt-6 md:hidden">
-            <button 
+            <button
               onClick={() => setShowAllExperience(!showAllExperience)}
               className="text-xs font-bold text-blue-400 hover:text-blue-300 py-2.5 px-6 border border-zinc-800 rounded-xl hover:border-zinc-700 transition"
             >
@@ -1130,16 +1129,16 @@ export default function App() {
       {selectedCaseStudy && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md overflow-y-auto">
           <div className="bg-zinc-950 border border-zinc-850 rounded-3xl w-full max-w-xl p-6 sm:p-8 space-y-6 relative my-8 max-h-[90vh] overflow-y-auto text-left">
-            <button 
-              onClick={() => setSelectedCaseStudy(null)} 
+            <button
+              onClick={() => setSelectedCaseStudy(null)}
               className="absolute top-4 right-4 h-8 w-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white"
             >
               ✕
             </button>
             <h3 className="text-2xl font-bold text-white pr-8">{selectedCaseStudy.title}</h3>
-            
+
             <p className="text-zinc-400 text-sm leading-relaxed">{selectedCaseStudy.description}</p>
-            
+
             <div className="space-y-5 border-t border-zinc-900 pt-6">
               <div>
                 <p className="text-xs font-semibold text-rose-400 uppercase tracking-wider mb-1">❌ The Problem</p>
@@ -1154,20 +1153,20 @@ export default function App() {
                 <p className="text-zinc-300 text-sm leading-relaxed">{selectedCaseStudy.impact}</p>
               </div>
             </div>
-            
+
             <div className="flex gap-4 border-t border-zinc-900 pt-6">
-              <a 
-                href={selectedCaseStudy.live} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href={selectedCaseStudy.live}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex-1 text-center bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-xl text-sm transition"
               >
                 Live Demo
               </a>
-              <a 
-                href={selectedCaseStudy.github} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href={selectedCaseStudy.github}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex-1 text-center border border-zinc-800 hover:bg-zinc-900 text-zinc-300 py-3 rounded-xl text-sm transition"
               >
                 GitHub Repository

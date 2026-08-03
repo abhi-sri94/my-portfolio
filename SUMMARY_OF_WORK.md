@@ -16,13 +16,14 @@
 | **7. Cost & Budget Planner Overlay** | Make the Cost Planner widget accessible on mobile without page bloating. | Extracted form/summary layouts into helper panels. Replaced inline form on mobile with a modal planner trigger card. |
 | **8. Mobile Navigation Hamburger Menu** | Enable smooth navigation on mobile viewports since the header menu was hidden. | Implemented a responsive hamburger menu trigger (`Menu`/`X` toggles) displaying a clean dropdown navigation panel. |
 | **9. Vercel Deployment Resolution** | Fix Vercel build failures caused by massive repository size. | Removed `node_modules` from Git tracking cache (which was previously committed) and updated `.gitignore`. |
+| **10. PDF Resume Integration** | Make resume download/view accessible globally, opening in a new tab. | Integrated direct links to `abhishek_updated_profile.pdf` in both the desktop header navbar and mobile dropdown menu drawer. |
 
 ---
 
 ## 🛠️ Detailed File Changes
 
 ### 1. [App.jsx](file:///Users/user/Desktop/My%20Portfolio/src/App.jsx)
-- **Imports**: Included Lucide-react `Menu` and `X` icons.
+- **Imports**: Included Lucide-react `Menu`, `X`, and `ExternalLink` icons.
 - **States**:
   - `mobileMenuOpen` (mobile nav menu toggle).
   - `selectedCaseStudy` (open/close case study overlay).
@@ -30,10 +31,11 @@
   - `showMobileCalculator` (trigger Cost Planner modal overlay).
 - **Layout Helper Functions**:
   - `renderForm` and `renderPanel` modularized to render cost planner either inline (desktop) or in a popover (mobile).
-- **Responsive Wrappers**:
+- **Responsive Wrappers & Navigation**:
   - Mobile avatar layout next to availability badges.
   - 3-line mobile description text with `lineHeight: '1.75'`.
   - Hidden large portrait right-hand column container on mobile using `hidden lg:flex`.
+  - Added target="_blank" resume links opening `abhishek_updated_profile.pdf` in a new tab on desktop navbar and mobile overlay drawer.
 
 ### 2. [index.css](file:///Users/user/Desktop/My%20Portfolio/src/index.css)
 - **Typographic System**: Configured custom Inter (body) and Outfit (headings) weights.
