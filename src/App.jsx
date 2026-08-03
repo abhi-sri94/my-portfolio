@@ -109,6 +109,8 @@ export default function App() {
   const [clientEmail, setClientEmail] = useState("");
   const [projectBrief, setProjectBrief] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -288,13 +290,72 @@ export default function App() {
 
   const { minEstimate, maxEstimate } = calculatePrice();
 
-  const handlePlannerSubmit = (e) => {
+  const handlePlannerSubmit = async (e) => {
     e.preventDefault();
     if (!clientName || !clientEmail) {
       alert("Please fill out your Name and Email address.");
       return;
     }
-    setIsSubmitted(true);
+
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "";
+
+    // If no access key is configured in env, fallback to mailto client-side flow
+    if (!accessKey || accessKey === "YOUR_WEB3FORMS_ACCESS_KEY_HERE") {
+      const subject = encodeURIComponent(`New Project Brief: ${projectType.toUpperCase()} Proposal`);
+      const body = encodeURIComponent(
+        `Hi Abhishek,\n\nI just submitted a project proposal on your portfolio website with these selections:\n\n` +
+        `--- Selection Summary ---\n` +
+        `- Project Type: ${projectType.toUpperCase()}\n` +
+        `- Project Scope: ${projectScope.toUpperCase()}\n` +
+        `- Timeline: ${projectTimeline.toUpperCase()}\n` +
+        `- Estimated Budget Range: $${minEstimate.toLocaleString()} - $${maxEstimate.toLocaleString()}\n\n` +
+        `--- Project Brief ---\n` +
+        `${projectBrief}\n\n` +
+        `Best regards,\n` +
+        `${clientName}\n` +
+        `Contact Email: ${clientEmail}`
+      );
+      window.location.href = `mailto:asri.4247@gmail.com?subject=${subject}&body=${body}`;
+      setIsSubmitted(true);
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `New Lead: ${clientName} (${projectType.toUpperCase()})`,
+          from_name: "Portfolio MVP Planner",
+          name: clientName,
+          email: clientEmail,
+          project_type: projectType,
+          project_scope: projectScope,
+          project_timeline: projectTimeline,
+          estimated_budget: `$${minEstimate.toLocaleString()} - $${maxEstimate.toLocaleString()}`,
+          project_brief: projectBrief
+        })
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        setSubmitError(result.message || "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setSubmitError("A connection error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const renderForm = () => (
@@ -412,12 +473,31 @@ export default function App() {
         />
       </div>
 
-      <button
-        type="submit"
-        className="w-full bg-blue-500 hover:bg-blue-650 text-white font-bold py-4 rounded-xl shadow-lg transition text-center"
-      >
-        Submit Proposal & Request Quote
-      </button>
+      <div className="space-y-4">
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full bg-blue-500 hover:bg-blue-600 disabled:bg-zinc-800 disabled:text-zinc-500 text-white font-bold py-4 rounded-xl shadow-lg transition text-center flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
+        >
+          {isSubmitting ? (
+            <>
+              <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Sending Proposal...
+            </>
+          ) : (
+            "Submit Proposal & Request Quote"
+          )}
+        </button>
+
+        {submitError && (
+          <p className="text-xs font-semibold text-rose-400 text-center mt-2 animate-pulse">
+            ⚠️ {submitError}
+          </p>
+        )}
+      </div>
     </form>
   );
 

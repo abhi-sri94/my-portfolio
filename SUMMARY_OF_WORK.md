@@ -17,6 +17,7 @@
 | **8. Mobile Navigation Hamburger Menu** | Enable smooth navigation on mobile viewports since the header menu was hidden. | Implemented a responsive hamburger menu trigger (`Menu`/`X` toggles) displaying a clean dropdown navigation panel. |
 | **9. Vercel Deployment Resolution** | Fix Vercel build failures caused by massive repository size. | Removed `node_modules` from Git tracking cache (which was previously committed) and updated `.gitignore`. |
 | **10. PDF Resume Integration** | Make resume download/view accessible globally, opening in a new tab. | Integrated direct links to `abhishek_updated_profile.pdf` in both the desktop header navbar and mobile dropdown menu drawer. |
+| **11. Form Proposal Lead Routing** | Securely deliver leads (selections, budget, and project brief details) to Abhishek's email. | Integrated asynchronous fetch to Web3Forms API (routes leads to inbox) with an automated `mailto:` client-side backup launcher. |
 
 ---
 
@@ -29,6 +30,7 @@
   - `selectedCaseStudy` (open/close case study overlay).
   - `showAllExperience` (expand/collapse experience timeline).
   - `showMobileCalculator` (trigger Cost Planner modal overlay).
+  - `isSubmitting` & `submitError` (feedback states for lead submission loader).
 - **Layout Helper Functions**:
   - `renderForm` and `renderPanel` modularized to render cost planner either inline (desktop) or in a popover (mobile).
 - **Responsive Wrappers & Navigation**:
@@ -36,6 +38,8 @@
   - 3-line mobile description text with `lineHeight: '1.75'`.
   - Hidden large portrait right-hand column container on mobile using `hidden lg:flex`.
   - Added target="_blank" resume links opening `abhishek_updated_profile.pdf` in a new tab on desktop navbar and mobile overlay drawer.
+  - Upgraded form submission to send selection parameters to Web3Forms serverless mailer, falling back to a pre-filled `mailto:` client launcher if no key is configured in VITE_WEB3FORMS_ACCESS_KEY.
+  - Enabled spinner animation and disabled buttons during requests.
 
 ### 2. [index.css](file:///Users/user/Desktop/My%20Portfolio/src/index.css)
 - **Typographic System**: Configured custom Inter (body) and Outfit (headings) weights.
