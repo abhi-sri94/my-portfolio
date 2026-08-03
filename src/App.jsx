@@ -503,6 +503,15 @@ export default function App() {
             <a href="#process" className="hover:text-white transition">Process</a>
             <a href="#estimator" className="hover:text-white transition">Cost Calculator</a>
             <a href="#contact" className="hover:text-white transition">Contact</a>
+            <a 
+              href="/abhishek_updated_profile.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-white transition flex items-center gap-1"
+            >
+              Resume
+              <ExternalLink className="w-3.5 h-3.5 text-zinc-500" />
+            </a>
           </div>
 
           <div className="flex items-center gap-4">
@@ -563,6 +572,16 @@ export default function App() {
                 className="hover:text-white transition py-2 border-b border-zinc-900/50"
               >
                 Contact
+              </a>
+              <a 
+                href="/abhishek_updated_profile.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                onClick={() => setMobileMenuOpen(false)} 
+                className="hover:text-white transition py-2 border-b border-zinc-900/50 flex items-center justify-between"
+              >
+                <span>Resume</span>
+                <ExternalLink className="w-4 h-4 text-zinc-500" />
               </a>
               
               <a
