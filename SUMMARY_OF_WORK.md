@@ -1,0 +1,56 @@
+# Summary of Work: Portfolio Redesign & Optimizations
+*A complete record of pairing sessions, implementation details, structural refactoring, and deployment fixes.*
+
+---
+
+## 📅 Timeline & Completed Objectives
+
+| Objective | Detail / Rationale | Implemented Actions |
+| :--- | :--- | :--- |
+| **1. Branding & Geographical Alignment** | Highlight Abhishek’s base in Delhi while targeting global clients. | Added an animated Map Pin badge (*"Delhi, India ➔ Serving Clients Globally"*) and updated Hero intro text. |
+| **2. Social Profile Links Refactoring** | Ensure all outbound footer social links route to Abhishek’s active profiles. | Refactored footer links to route correctly to X, LinkedIn, and GitHub. |
+| **3. High-Fidelity Photo Retain** | Remove stale filters on profile images to preserve friendly, colorful branding. | Reverted portrait image design to colorful representation. |
+| **4. Hero Mobile Space Savings** | Shrink mobile hero section scroll height to let core stats and CTAs appear above the fold. | Hidden the large portrait card on mobile. Introduced a compact circular profile avatar (`h-20 w-20`) floating next to availability badges. |
+| **5. Core Mobile Information Architecture** | Trim page scroll height by compressing secondary details. | Clamped services descriptions to 2 lines (max 3 bullets). Collapsed experience timeline to latest entry with a toggle to view full list. |
+| **6. Interactive Case Study Modals** | Keep deep engineering details intact without cluttering mobile screens. | Hidden Challenge/Solution/Impact texts on mobile. Created a modern, glassmorphic modal overlay launcher triggered by a clean *"Read Case Study"* button. |
+| **7. Cost & Budget Planner Overlay** | Make the Cost Planner widget accessible on mobile without page bloating. | Extracted form/summary layouts into helper panels. Replaced inline form on mobile with a modal planner trigger card. |
+| **8. Mobile Navigation Hamburger Menu** | Enable smooth navigation on mobile viewports since the header menu was hidden. | Implemented a responsive hamburger menu trigger (`Menu`/`X` toggles) displaying a clean dropdown navigation panel. |
+| **9. Vercel Deployment Resolution** | Fix Vercel build failures caused by massive repository size. | Removed `node_modules` from Git tracking cache (which was previously committed) and updated `.gitignore`. |
+
+---
+
+## 🛠️ Detailed File Changes
+
+### 1. [App.jsx](file:///Users/user/Desktop/My%20Portfolio/src/App.jsx)
+- **Imports**: Included Lucide-react `Menu` and `X` icons.
+- **States**:
+  - `mobileMenuOpen` (mobile nav menu toggle).
+  - `selectedCaseStudy` (open/close case study overlay).
+  - `showAllExperience` (expand/collapse experience timeline).
+  - `showMobileCalculator` (trigger Cost Planner modal overlay).
+- **Layout Helper Functions**:
+  - `renderForm` and `renderPanel` modularized to render cost planner either inline (desktop) or in a popover (mobile).
+- **Responsive Wrappers**:
+  - Mobile avatar layout next to availability badges.
+  - 3-line mobile description text with `lineHeight: '1.75'`.
+  - Hidden large portrait right-hand column container on mobile using `hidden lg:flex`.
+
+### 2. [index.css](file:///Users/user/Desktop/My%20Portfolio/src/index.css)
+- **Typographic System**: Configured custom Inter (body) and Outfit (headings) weights.
+- **Scrollbars & Spacing**: Sleek dark scrollbars for index body and horizontal project gallery.
+- **Animations**:
+  - Added `@keyframes microFloat` for subtle mobile avatar movement.
+  - Added `.animate-micro-float` utility.
+- **Glassmorphic styles**: Implemented `.glass-card` and `.glass-nav`.
+
+### 3. [.gitignore](file:///Users/user/Desktop/My%20Portfolio/.gitignore)
+- Added `.vercel` to ignore patterns.
+- Verified `node_modules` cache suppression.
+
+---
+
+## 🚀 Live Environment Verification
+
+- **Production Deployment Status**: **Ready** ●
+- **Production URL**: [abhishek-codes.vercel.app](https://abhishek-codes.vercel.app/)
+- **Mobile View Audit Findings**: Verified fully responsive on Galaxy/iPhone viewports. All modals (Case Studies, Quote Planner, Navigation Drawer) trigger, slide down, scroll, and close correctly.
