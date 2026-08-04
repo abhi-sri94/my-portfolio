@@ -18,6 +18,7 @@
 | **9. Vercel Deployment Resolution** | Fix Vercel build failures caused by massive repository size. | Removed `node_modules` from Git tracking cache (which was previously committed) and updated `.gitignore`. |
 | **10. PDF Resume Integration** | Make resume download/view accessible globally, opening in a new tab. | Integrated direct links to `abhishek_updated_profile.pdf` in both the desktop header navbar and mobile dropdown menu drawer. |
 | **11. Form Proposal Lead Routing** | Securely deliver leads (selections, budget, and project brief details) to Abhishek's email. | Integrated asynchronous fetch to Web3Forms API (routes leads to inbox) with an automated `mailto:` client-side backup launcher. |
+| **12. Custom Brand Assets & SEO** | Customize site browser tab icon and social preview banner. | Generated and integrated custom glowing favicon (`favicon.png`) and high-fidelity social share card (`og-image.png`). |
 
 ---
 
@@ -41,7 +42,11 @@
   - Upgraded form submission to send selection parameters to Web3Forms serverless mailer, falling back to a pre-filled `mailto:` client launcher if no key is configured in VITE_WEB3FORMS_ACCESS_KEY.
   - Enabled spinner animation and disabled buttons during requests.
 
-### 2. [index.css](file:///Users/user/Desktop/My%20Portfolio/src/index.css)
+### 2. [index.html](file:///Users/user/Desktop/My%20Portfolio/index.html)
+- **SEO & Metadata**: Configured title, description, and keywords. Added Open Graph and Twitter tags referencing the custom `og-image.png`.
+- **Favicon Links**: Customized to load the glowing logo `favicon.png` with SVG `favicon.svg` fallback.
+
+### 3. [index.css](file:///Users/user/Desktop/My%20Portfolio/src/index.css)
 - **Typographic System**: Configured custom Inter (body) and Outfit (headings) weights.
 - **Scrollbars & Spacing**: Sleek dark scrollbars for index body and horizontal project gallery.
 - **Animations**:
