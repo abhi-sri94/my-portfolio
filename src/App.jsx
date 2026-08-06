@@ -112,6 +112,18 @@ export default function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
 
+  // Project Inquiry Form State
+  const [inquiryName, setInquiryName] = useState("");
+  const [inquiryEmail, setInquiryEmail] = useState("");
+  const [inquiryCompany, setInquiryCompany] = useState("");
+  const [inquiryProjectType, setInquiryProjectType] = useState("web-app");
+  const [inquiryBudget, setInquiryBudget] = useState("1000-3000");
+  const [inquiryTimeline, setInquiryTimeline] = useState("1-2-months");
+  const [inquiryBrief, setInquiryBrief] = useState("");
+  const [inquirySubmitted, setInquirySubmitted] = useState(false);
+  const [inquirySubmitting, setInquirySubmitting] = useState(false);
+  const [inquiryError, setInquiryError] = useState(null);
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 300) {
@@ -358,6 +370,64 @@ export default function App() {
     }
   };
 
+  const handleInquirySubmit = async (e) => {
+    e.preventDefault();
+    if (!inquiryName || !inquiryEmail || !inquiryBrief) {
+      alert("Please fill out your Name, Email, and Project Brief.");
+      return;
+    }
+
+    setInquirySubmitting(true);
+    setInquiryError(null);
+
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "";
+
+    if (!accessKey) {
+      setInquiryError("Something went wrong. Please email me directly at asri.4247@gmail.com");
+      setInquirySubmitting(false);
+      return;
+    }
+
+    try {
+      // Calculate current pricing estimator selections to include as context
+      const { minEstimate, maxEstimate } = calculatePrice();
+      const calcSummary = `Service: ${projectType.toUpperCase()}, Scale: ${projectScope.toUpperCase()}, Timeline: ${projectTimeline.toUpperCase()}, Budget: $${minEstimate.toLocaleString()} - $${maxEstimate.toLocaleString()}`;
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `New Lead Inquiry: ${inquiryName} (${inquiryProjectType.toUpperCase()})`,
+          from_name: "Portfolio Inquiry Form",
+          name: inquiryName,
+          email: inquiryEmail,
+          company: inquiryCompany || "N/A",
+          project_type: inquiryProjectType,
+          budget_range: inquiryBudget,
+          timeline: inquiryTimeline,
+          project_brief: inquiryBrief,
+          calculator_selections: calcSummary
+        })
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setInquirySubmitted(true);
+      } else {
+        setInquiryError(result.message || "Something went wrong. Please email me directly at asri.4247@gmail.com");
+      }
+    } catch (err) {
+      setInquiryError("A connection error occurred. Please email me directly at asri.4247@gmail.com");
+    } finally {
+      setInquirySubmitting(false);
+    }
+  };
+
+
   const renderForm = () => (
     <form onSubmit={handlePlannerSubmit} className="bg-zinc-950 border border-zinc-850 rounded-3xl p-6 sm:p-8 space-y-8 w-full text-left">
       {/* Parameter 1: Project Type */}
@@ -583,10 +653,10 @@ export default function App() {
             <a href="#process" className="hover:text-white transition">Process</a>
             <a href="#estimator" className="hover:text-white transition">Cost Calculator</a>
             <a href="#contact" className="hover:text-white transition">Contact</a>
-            <a
-              href="/abhishek_updated_profile.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <a 
+              href="/abhishek_updated_profile.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer" 
               className="hover:text-white transition flex items-center gap-1"
             >
               View Resume
@@ -596,15 +666,15 @@ export default function App() {
 
           <div className="flex items-center gap-4">
             <a
-              href="#estimator"
+              href="#contact"
               className="hidden sm:inline-flex items-center gap-1.5 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700/60 hover:border-zinc-600 text-white text-xs sm:text-sm font-semibold py-2 px-4 rounded-xl transition duration-300 shadow-sm"
             >
               <Calendar className="w-4 h-4 text-blue-400" />
-              Schedule Free Consultation
+              Start Your Project
             </a>
 
             {/* Mobile menu trigger */}
-            <button
+            <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="flex md:hidden text-zinc-400 hover:text-white p-1.5 transition duration-200 focus:outline-none"
               aria-label="Toggle Menu"
@@ -618,59 +688,59 @@ export default function App() {
         {mobileMenuOpen && (
           <div className="md:hidden w-full bg-zinc-950/95 backdrop-blur-lg border-b border-zinc-900 animate-fadeIn">
             <div className="flex flex-col px-6 py-6 space-y-4 text-base font-semibold text-zinc-300">
-              <a
-                href="#services"
-                onClick={() => setMobileMenuOpen(false)}
+              <a 
+                href="#services" 
+                onClick={() => setMobileMenuOpen(false)} 
                 className="hover:text-white transition py-2 border-b border-zinc-900/50"
               >
                 Services
               </a>
-              <a
-                href="#projects"
-                onClick={() => setMobileMenuOpen(false)}
+              <a 
+                href="#projects" 
+                onClick={() => setMobileMenuOpen(false)} 
                 className="hover:text-white transition py-2 border-b border-zinc-900/50"
               >
                 Projects
               </a>
-              <a
-                href="#process"
-                onClick={() => setMobileMenuOpen(false)}
+              <a 
+                href="#process" 
+                onClick={() => setMobileMenuOpen(false)} 
                 className="hover:text-white transition py-2 border-b border-zinc-900/50"
               >
                 Process
               </a>
-              <a
-                href="#estimator"
-                onClick={() => setMobileMenuOpen(false)}
+              <a 
+                href="#estimator" 
+                onClick={() => setMobileMenuOpen(false)} 
                 className="hover:text-white transition py-2 border-b border-zinc-900/50"
               >
                 Cost Calculator
               </a>
-              <a
-                href="#contact"
-                onClick={() => setMobileMenuOpen(false)}
+              <a 
+                href="#contact" 
+                onClick={() => setMobileMenuOpen(false)} 
                 className="hover:text-white transition py-2 border-b border-zinc-900/50"
               >
                 Contact
               </a>
-              <a
-                href="/abhishek_updated_profile.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileMenuOpen(false)}
+              <a 
+                href="/abhishek_updated_profile.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                onClick={() => setMobileMenuOpen(false)} 
                 className="hover:text-white transition py-2 border-b border-zinc-900/50 flex items-center justify-between"
               >
                 <span>View Resume</span>
                 <ExternalLink className="w-4 h-4 text-zinc-500" />
               </a>
-
+              
               <a
-                href="#estimator"
+                href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="inline-flex items-center justify-center gap-1.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-white text-sm font-semibold py-3 px-4 rounded-xl transition duration-300 w-full"
               >
                 <Calendar className="w-4 h-4 text-blue-400" />
-                Schedule Free Consultation
+                Start Your Project
               </a>
             </div>
           </div>
@@ -732,15 +802,15 @@ export default function App() {
                 href="#estimator"
                 className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white text-sm sm:text-base font-semibold px-6 py-3.5 lg:px-8 lg:py-4 rounded-2xl shadow-lg shadow-blue-500/15 hover:scale-[1.02] active:scale-95 transition duration-300 text-center"
               >
-                Plan Your Project & Budget
+                🚀 Get Instant Estimate
                 <ArrowRight className="w-4 h-4" />
               </a>
 
               <a
-                href="#projects"
+                href="#contact"
                 className="inline-flex items-center justify-center gap-2 border border-zinc-800 hover:border-zinc-700 bg-zinc-950/80 hover:bg-zinc-900 text-zinc-300 hover:text-white text-sm sm:text-base px-6 py-3.5 lg:px-8 lg:py-4 rounded-2xl font-semibold shadow-sm hover:scale-[1.02] active:scale-95 transition duration-300 text-center"
               >
-                Explore Projects
+                💬 Start Your Project
               </a>
             </div>
 
@@ -1175,8 +1245,181 @@ export default function App() {
         </div>
       </section>
 
+      {/* Start Your Project Section */}
+      <section id="contact" className="py-20 lg:py-28 relative scroll-mt-20 border-t border-zinc-900 bg-zinc-950/20">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-white bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
+              🚀 Start Your Project
+            </h2>
+            <p className="text-zinc-400 text-sm sm:text-lg max-w-xl mx-auto leading-relaxed">
+              Have an idea? Tell me what you're building and I'll reply within 24 hours with next steps, timeline and estimated budget.
+            </p>
+          </div>
+
+          {inquirySubmitted ? (
+            <div className="bg-zinc-950 border border-emerald-500/30 rounded-3xl p-8 sm:p-12 text-center space-y-4">
+              <CheckCircle2 className="w-12 h-12 text-emerald-400 mx-auto animate-bounce" />
+              <h3 className="text-xl sm:text-2xl font-bold text-white">✅ Thanks!</h3>
+              <p className="text-zinc-400 text-sm sm:text-base max-w-md mx-auto leading-relaxed">
+                I've received your project brief. I'll review it personally and get back to you at <strong className="text-white">{inquiryEmail}</strong> within 24 hours.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleInquirySubmit} className="bg-zinc-950 border border-zinc-850 rounded-3xl p-6 sm:p-10 space-y-6 text-left shadow-2xl shadow-blue-500/5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Name</label>
+                  <input
+                    type="text"
+                    required
+                    value={inquiryName}
+                    onChange={(e) => setInquiryName(e.target.value)}
+                    placeholder="Abhishek Srivastava"
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm text-white placeholder-zinc-600 transition"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Email Address</label>
+                  <input
+                    type="email"
+                    required
+                    value={inquiryEmail}
+                    onChange={(e) => setInquiryEmail(e.target.value)}
+                    placeholder="you@example.com"
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm text-white placeholder-zinc-600 transition"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Company <span className="text-zinc-600">(Optional)</span></label>
+                  <input
+                    type="text"
+                    value={inquiryCompany}
+                    onChange={(e) => setInquiryCompany(e.target.value)}
+                    placeholder="Acme Corp"
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm text-white placeholder-zinc-600 transition"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Project Type</label>
+                  <select
+                    value={inquiryProjectType}
+                    onChange={(e) => setInquiryProjectType(e.target.value)}
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm text-white transition"
+                  >
+                    <option value="web-app">Web App</option>
+                    <option value="mobile-app">Mobile App</option>
+                    <option value="saas">SaaS</option>
+                    <option value="landing-page">Landing Page</option>
+                    <option value="ai-tool">AI Tool</option>
+                    <option value="internal-dashboard">Internal Dashboard</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Estimated Budget</label>
+                  <select
+                    value={inquiryBudget}
+                    onChange={(e) => setInquiryBudget(e.target.value)}
+                    className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm text-white transition"
+                  >
+                    <option value="under-500">Under $500</option>
+                    <option value="500-1000">$500 - $1,000</option>
+                    <option value="1000-3000">$1,000 - $3,000</option>
+                    <option value="3000-5000">$3,000 - $5,000</option>
+                    <option value="above-5000">$5,000+</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Target Timeline</label>
+                <select
+                  value={inquiryTimeline}
+                  onChange={(e) => setInquiryTimeline(e.target.value)}
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm text-white transition"
+                >
+                  <option value="asap">ASAP</option>
+                  <option value="2-4-weeks">2 - 4 weeks</option>
+                  <option value="1-2-months">1 - 2 months</option>
+                  <option value="flexible">Flexible</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">What are you building?</label>
+                <textarea
+                  required
+                  rows={5}
+                  value={inquiryBrief}
+                  onChange={(e) => setInquiryBrief(e.target.value)}
+                  placeholder="Tell me about your product vision, target audience, core features, or stack preferences..."
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm text-white placeholder-zinc-650 resize-none transition"
+                />
+              </div>
+
+              <div className="space-y-4">
+                <button
+                  type="submit"
+                  disabled={inquirySubmitting}
+                  className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 disabled:from-zinc-800 disabled:to-zinc-800 disabled:text-zinc-500 text-white font-bold py-4 rounded-xl shadow-lg transition text-center flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
+                >
+                  {inquirySubmitting ? (
+                    <>
+                      <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Sending Project Inquiry...
+                    </>
+                  ) : (
+                    "Send Project Inquiry"
+                  )}
+                </button>
+
+                <p className="text-center text-xs text-zinc-500 mt-2">
+                  🔒 I'll personally review your project and reply within 24 hours.
+                </p>
+
+                {inquiryError && (
+                  <div className="bg-red-950/40 border border-red-500/20 rounded-2xl p-4 text-center mt-3 text-red-300 text-xs font-semibold leading-relaxed">
+                    ⚠️ {inquiryError}
+                  </div>
+                )}
+              </div>
+            </form>
+          )}
+
+          {/* Alternative Contacts Grid */}
+          <div className="mt-12 border-t border-zinc-900 pt-8 text-center">
+            <p className="text-xs text-zinc-500 font-bold uppercase tracking-wider mb-6">Or connect directly</p>
+            <div className="flex flex-wrap gap-4 justify-center items-center">
+              <a
+                href="mailto:asri.4247@gmail.com"
+                className="flex items-center gap-2 bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 rounded-xl px-5 py-3 text-zinc-300 hover:text-white text-sm font-semibold transition"
+              >
+                <Mail className="w-4.5 h-4.5 text-blue-400" />
+                Email
+              </a>
+              <a
+                href="https://www.linkedin.com/in/abhishekcodes1/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 rounded-xl px-5 py-3 text-zinc-300 hover:text-white text-sm font-semibold transition"
+              >
+                <Linkedin className="w-4.5 h-4.5 text-blue-400" />
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer & General CTAs */}
-      <footer id="contact" className="border-t border-zinc-900 bg-zinc-950/60 py-12 text-center text-zinc-500 text-xs sm:text-sm scroll-mt-20">
+      <footer id="footer" className="border-t border-zinc-900 bg-zinc-950/60 py-12 text-center text-zinc-500 text-xs sm:text-sm scroll-mt-20">
         <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-6">
           <p className="text-zinc-600">
             © {new Date().getFullYear()} Abhishek Srivastava. All client deliverables include full source code ownership.

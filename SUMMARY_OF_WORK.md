@@ -19,6 +19,7 @@
 | **10. PDF Resume Integration** | Make resume download/view accessible globally, opening in a new tab. | Integrated direct links to `abhishek_updated_profile.pdf` in both the desktop header navbar and mobile dropdown menu drawer. |
 | **11. Form Proposal Lead Routing** | Securely deliver leads (selections, budget, and project brief details) to Abhishek's email. | Integrated asynchronous fetch to Web3Forms API (routes leads to inbox) with an automated `mailto:` client-side backup launcher. |
 | **12. Custom Brand Assets & SEO** | Customize site browser tab icon and social preview banner. | Generated and integrated custom glowing favicon (`favicon.png`) and high-fidelity social share card (`og-image.png`). |
+| **13. Restructured Conversion Funnel** | Streamline client conversion paths, separating calculator estimates from serious inquiries. | Created a new "Start Your Project" form section, refactored hero and header CTA buttons to route users based on distinct intent, and wired up conditional calculator states in the submission payload. |
 
 ---
 
@@ -28,6 +29,8 @@
 - **Imports**: Included Lucide-react `Menu`, `X`, and `ExternalLink` icons.
 - **States**:
   - `mobileMenuOpen` (mobile nav menu toggle).
+  - `inquiryName`, `inquiryEmail`, `inquiryCompany`, `inquiryProjectType`, `inquiryBudget`, `inquiryTimeline`, `inquiryBrief` (direct project inquiry form inputs).
+  - `inquirySubmitted`, `inquirySubmitting`, `inquiryError` (submission loaders and feedback states).
   - `selectedCaseStudy` (open/close case study overlay).
   - `showAllExperience` (expand/collapse experience timeline).
   - `showMobileCalculator` (trigger Cost Planner modal overlay).
