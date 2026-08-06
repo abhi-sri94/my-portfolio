@@ -104,13 +104,7 @@ export default function App() {
   const [projectScope, setProjectScope] = useState("medium"); // simple, medium, enterprise
   const [projectTimeline, setProjectTimeline] = useState("standard"); // urgent, standard, flexible
 
-  // Lead Form State
-  const [clientName, setClientName] = useState("");
-  const [clientEmail, setClientEmail] = useState("");
-  const [projectBrief, setProjectBrief] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState(null);
+
 
   // Project Inquiry Form State
   const [inquiryName, setInquiryName] = useState("");
@@ -302,73 +296,51 @@ export default function App() {
 
   const { minEstimate, maxEstimate } = calculatePrice();
 
-  const handlePlannerSubmit = async (e) => {
-    e.preventDefault();
-    if (!clientName || !clientEmail) {
-      alert("Please fill out your Name and Email address.");
-      return;
+  const handleEstimateApply = () => {
+    // Automatically close the mobile calculator overlay if open
+    setShowMobileCalculator(false);
+
+    // Map projectType to inquiryProjectType
+    let typeVal = "web-app";
+    if (projectType === "saas") typeVal = "saas";
+    else if (projectType === "performance") typeVal = "other";
+    setInquiryProjectType(typeVal);
+
+    // Calculate price and map to nearest budget dropdown
+    const { minEstimate, maxEstimate } = calculatePrice();
+    let budgetVal = "1000-3000";
+    if (maxEstimate < 500) budgetVal = "under-500";
+    else if (maxEstimate <= 1000) budgetVal = "500-1000";
+    else if (maxEstimate <= 3000) budgetVal = "1000-3000";
+    else if (maxEstimate <= 5000) budgetVal = "3000-5000";
+    else budgetVal = "above-5000";
+    setInquiryBudget(budgetVal);
+
+    // Map projectTimeline to inquiryTimeline
+    let timelineVal = "1-2-months";
+    if (projectTimeline === "urgent") timelineVal = "2-4-weeks";
+    else if (projectTimeline === "standard") timelineVal = "1-2-months";
+    else if (projectTimeline === "flexible") timelineVal = "flexible";
+    setInquiryTimeline(timelineVal);
+
+    // Populate inquiryBrief text with custom starting template
+    const serviceLabel = projectType === "mvp" ? "Product MVP" : projectType === "saas" ? "SaaS / API Systems" : "Speed Optimization";
+    const scopeLabel = projectScope === "simple" ? "Standard" : projectScope === "medium" ? "Growth" : "Enterprise";
+    setInquiryBrief(`Based on my calculator estimate for a ${serviceLabel} (${scopeLabel} scope)... `);
+
+    // Smooth scroll to contact section
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
     }
 
-    setIsSubmitting(true);
-    setSubmitError(null);
-
-    const accessKey = (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "271d54b0-09da-41e7-bd0a-e6ffb5e11173").trim();
-
-    // If no access key is configured in env, fallback to mailto client-side flow
-    if (!accessKey) {
-      const subject = encodeURIComponent(`New Project Brief: ${projectType.toUpperCase()} Proposal`);
-      const body = encodeURIComponent(
-        `Hi Abhishek,\n\nI just submitted a project proposal on your portfolio website with these selections:\n\n` +
-        `--- Selection Summary ---\n` +
-        `- Project Type: ${projectType.toUpperCase()}\n` +
-        `- Project Scope: ${projectScope.toUpperCase()}\n` +
-        `- Timeline: ${projectTimeline.toUpperCase()}\n` +
-        `- Estimated Budget Range: $${minEstimate.toLocaleString()} - $${maxEstimate.toLocaleString()}\n\n` +
-        `--- Project Brief ---\n` +
-        `${projectBrief}\n\n` +
-        `Best regards,\n` +
-        `${clientName}\n` +
-        `Contact Email: ${clientEmail}`
-      );
-      window.location.href = `mailto:asri.4247@gmail.com?subject=${subject}&body=${body}`;
-      setIsSubmitted(true);
-      setIsSubmitting(false);
-      return;
-    }
-
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          access_key: accessKey,
-          subject: `New Lead: ${clientName} (${projectType.toUpperCase()})`,
-          from_name: "Portfolio MVP Planner",
-          name: clientName,
-          email: clientEmail,
-          project_type: projectType,
-          project_scope: projectScope,
-          project_timeline: projectTimeline,
-          estimated_budget: `$${minEstimate.toLocaleString()} - $${maxEstimate.toLocaleString()}`,
-          project_brief: projectBrief
-        })
-      });
-
-      const result = await response.json();
-      if (result.success) {
-        setIsSubmitted(true);
-      } else {
-        setSubmitError(result.message || "Something went wrong. Please try again.");
-      }
-    } catch (err) {
-      setSubmitError("A connection error occurred. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Focus name field after scroll completes
+    setTimeout(() => {
+      const nameInput = document.querySelector('input[placeholder="Abhishek Srivastava"]');
+      if (nameInput) nameInput.focus();
+    }, 850);
   };
+
 
   const handleInquirySubmit = async (e) => {
     e.preventDefault();
@@ -442,7 +414,7 @@ export default function App() {
 
 
   const renderForm = () => (
-    <form onSubmit={handlePlannerSubmit} className="bg-zinc-950 border border-zinc-850 rounded-3xl p-6 sm:p-8 space-y-8 w-full text-left">
+    <div className="bg-zinc-950 border border-zinc-850 rounded-3xl p-6 sm:p-8 space-y-8 w-full text-left">
       {/* Parameter 1: Project Type */}
       <div>
         <label className="block text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4">
@@ -523,65 +495,7 @@ export default function App() {
           ))}
         </div>
       </div>
-
-      {/* Lead Capture Fields */}
-      <div className="border-t border-zinc-850 pt-8 space-y-4">
-        <label className="block text-xs font-bold uppercase tracking-widest text-zinc-400">
-          4. Your Details
-        </label>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <input
-            type="text"
-            required
-            placeholder="Your Name"
-            value={clientName}
-            onChange={(e) => setClientName(e.target.value)}
-            className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3.5 outline-none focus:border-blue-500 text-sm text-white placeholder-zinc-500 text-left"
-          />
-          <input
-            type="email"
-            required
-            placeholder="Your Email"
-            value={clientEmail}
-            onChange={(e) => setClientEmail(e.target.value)}
-            className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3.5 outline-none focus:border-blue-500 text-sm text-white placeholder-zinc-500 text-left"
-          />
-        </div>
-        <textarea
-          rows="4"
-          placeholder="Describe your project brief (features, purpose, integrations needed...)"
-          value={projectBrief}
-          onChange={(e) => setProjectBrief(e.target.value)}
-          className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3.5 outline-none focus:border-blue-500 text-sm text-white placeholder-zinc-500 text-left"
-        />
-      </div>
-
-      <div className="space-y-4">
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full bg-blue-500 hover:bg-blue-600 disabled:bg-zinc-800 disabled:text-zinc-500 text-white font-bold py-4 rounded-xl shadow-lg transition text-center flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
-        >
-          {isSubmitting ? (
-            <>
-              <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              Sending Proposal...
-            </>
-          ) : (
-            "Submit Proposal & Request Quote"
-          )}
-        </button>
-
-        {submitError && (
-          <p className="text-xs font-semibold text-rose-400 text-center mt-2 animate-pulse">
-            ⚠️ {submitError}
-          </p>
-        )}
-      </div>
-    </form>
+    </div>
   );
 
   const renderPanel = () => (
@@ -617,28 +531,17 @@ export default function App() {
         </div>
       </div>
 
-      {/* Form Success Panel */}
-      {isSubmitted ? (
-        <div className="bg-zinc-900 border border-emerald-500/30 p-5 rounded-2xl mt-6 flex items-start gap-3">
-          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-          <div>
-            <h4 className="text-sm font-bold text-white">Proposal Received!</h4>
-            <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
-              Thanks {clientName}. I will review your project brief and get back to you at {clientEmail} within 24 hours.
-            </p>
-          </div>
-        </div>
-      ) : (
-        <div className="bg-zinc-900/50 border border-zinc-850 p-5 rounded-2xl mt-6 flex items-start gap-3">
-          <MessageSquare className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
-          <div>
-            <h4 className="text-xs font-bold text-zinc-300 uppercase tracking-wider">Next Step</h4>
-            <p className="text-xs text-zinc-500 mt-1 leading-relaxed">
-              Fill out your details on the left to request a secure discovery booking code.
-            </p>
-          </div>
-        </div>
-      )}
+      <div className="mt-6 space-y-3">
+        <button
+          onClick={handleEstimateApply}
+          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-xl shadow-lg transition text-center flex items-center justify-center gap-2 cursor-pointer"
+        >
+          🚀 Start Project with This Estimate
+        </button>
+        <p className="text-center text-xxs text-zinc-500 leading-relaxed">
+          Clicking will pre-fill details and scroll to the contact form.
+        </p>
+      </div>
     </div>
   );
 

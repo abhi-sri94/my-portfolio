@@ -20,6 +20,7 @@
 | **11. Form Proposal Lead Routing** | Securely deliver leads (selections, budget, and project brief details) to Abhishek's email. | Integrated asynchronous fetch to Web3Forms API (routes leads to inbox) with an automated `mailto:` client-side backup launcher. |
 | **12. Custom Brand Assets & SEO** | Customize site browser tab icon and social preview banner. | Generated and integrated custom glowing favicon (`favicon.png`) and high-fidelity social share card (`og-image.png`). |
 | **13. Restructured Conversion Funnel** | Streamline client conversion paths, separating calculator estimates from serious inquiries. | Created a new "Start Your Project" form section, refactored hero and header CTA buttons to route users based on distinct intent, and wired up conditional calculator states in the submission payload. |
+| **14. Zero-Friction Cost Calculator** | Eliminate calculator lead form gate blocks to optimize conversion page retention. | Removed submission forms from the Cost Calculator. Implemented an automated "Apply Estimate" link that scrolls to the contact section, pre-fills project parameters, and focuses input fields. |
 
 ---
 
