@@ -427,6 +427,19 @@ export default function App() {
     }
   };
 
+  const handleInquiryReset = () => {
+    setInquiryName("");
+    setInquiryEmail("");
+    setInquiryCompany("");
+    setInquiryProjectType("web-app");
+    setInquiryBudget("1000-3000");
+    setInquiryTimeline("1-2-months");
+    setInquiryBrief("");
+    setInquirySubmitted(false);
+    setInquiryError(null);
+  };
+
+
 
   const renderForm = () => (
     <form onSubmit={handlePlannerSubmit} className="bg-zinc-950 border border-zinc-850 rounded-3xl p-6 sm:p-8 space-y-8 w-full text-left">
@@ -1264,6 +1277,12 @@ export default function App() {
               <p className="text-zinc-400 text-sm sm:text-base max-w-md mx-auto leading-relaxed">
                 I've received your project brief. I'll review it personally and get back to you at <strong className="text-white">{inquiryEmail}</strong> within 24 hours.
               </p>
+              <button
+                onClick={handleInquiryReset}
+                className="mt-4 text-xs font-bold text-blue-400 hover:text-blue-300 py-2.5 px-6 border border-zinc-800 rounded-xl hover:border-zinc-700 transition cursor-pointer"
+              >
+                Submit Another Inquiry
+              </button>
             </div>
           ) : (
             <form onSubmit={handleInquirySubmit} className="bg-zinc-950 border border-zinc-850 rounded-3xl p-6 sm:p-10 space-y-6 text-left shadow-2xl shadow-blue-500/5">
