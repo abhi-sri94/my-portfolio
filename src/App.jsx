@@ -569,10 +569,10 @@ export default function App() {
             <a href="#process" className="hover:text-white transition">Process</a>
             <a href="#estimator" className="hover:text-white transition">Cost Calculator</a>
             <a href="#contact" className="hover:text-white transition">Contact</a>
-            <a 
-              href="/abhishek_updated_profile.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="/abhishek_updated_profile.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-white transition flex items-center gap-1"
             >
               View Resume
@@ -590,7 +590,7 @@ export default function App() {
             </a>
 
             {/* Mobile menu trigger */}
-            <button 
+            <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="flex md:hidden text-zinc-400 hover:text-white p-1.5 transition duration-200 focus:outline-none"
               aria-label="Toggle Menu"
@@ -604,52 +604,52 @@ export default function App() {
         {mobileMenuOpen && (
           <div className="md:hidden w-full bg-zinc-950/95 backdrop-blur-lg border-b border-zinc-900 animate-fadeIn">
             <div className="flex flex-col px-6 py-6 space-y-4 text-base font-semibold text-zinc-300">
-              <a 
-                href="#services" 
-                onClick={() => setMobileMenuOpen(false)} 
+              <a
+                href="#services"
+                onClick={() => setMobileMenuOpen(false)}
                 className="hover:text-white transition py-2 border-b border-zinc-900/50"
               >
                 Services
               </a>
-              <a 
-                href="#projects" 
-                onClick={() => setMobileMenuOpen(false)} 
+              <a
+                href="#projects"
+                onClick={() => setMobileMenuOpen(false)}
                 className="hover:text-white transition py-2 border-b border-zinc-900/50"
               >
                 Projects
               </a>
-              <a 
-                href="#process" 
-                onClick={() => setMobileMenuOpen(false)} 
+              <a
+                href="#process"
+                onClick={() => setMobileMenuOpen(false)}
                 className="hover:text-white transition py-2 border-b border-zinc-900/50"
               >
                 Process
               </a>
-              <a 
-                href="#estimator" 
-                onClick={() => setMobileMenuOpen(false)} 
+              <a
+                href="#estimator"
+                onClick={() => setMobileMenuOpen(false)}
                 className="hover:text-white transition py-2 border-b border-zinc-900/50"
               >
                 Cost Calculator
               </a>
-              <a 
-                href="#contact" 
-                onClick={() => setMobileMenuOpen(false)} 
+              <a
+                href="#contact"
+                onClick={() => setMobileMenuOpen(false)}
                 className="hover:text-white transition py-2 border-b border-zinc-900/50"
               >
                 Contact
               </a>
-              <a 
-                href="/abhishek_updated_profile.pdf" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                onClick={() => setMobileMenuOpen(false)} 
+              <a
+                href="/abhishek_updated_profile.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
                 className="hover:text-white transition py-2 border-b border-zinc-900/50 flex items-center justify-between"
               >
                 <span>View Resume</span>
                 <ExternalLink className="w-4 h-4 text-zinc-500" />
               </a>
-              
+
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
@@ -845,11 +845,10 @@ export default function App() {
             <div className="max-w-2xl">
               <p className="text-purple-400 font-semibold tracking-widest text-xs uppercase mb-3">Featured Projects</p>
               <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
-                Self-Initiated & Open-Source Products
+                Products & Ventures
               </h2>
               <p className="text-zinc-400 text-sm sm:text-base">
-                Case studies of full-stack platforms and tools I have engineered, launched, and open-sourced.
-              </p>
+                A collection of products and businesses I've designed, built, and continue to grow—from AI SaaS platforms to marketplaces and developer tools.</p>
             </div>
 
             {/* Filter tabs */}
