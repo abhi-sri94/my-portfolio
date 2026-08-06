@@ -312,7 +312,7 @@ export default function App() {
     setIsSubmitting(true);
     setSubmitError(null);
 
-    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "271d54b0-09da-41e7-bd0a-e6ffb5e11173";
+    const accessKey = (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "271d54b0-09da-41e7-bd0a-e6ffb5e11173").trim();
 
     // If no access key is configured in env, fallback to mailto client-side flow
     if (!accessKey) {
@@ -380,7 +380,7 @@ export default function App() {
     setInquirySubmitting(true);
     setInquiryError(null);
 
-    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "271d54b0-09da-41e7-bd0a-e6ffb5e11173";
+    const accessKey = (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "271d54b0-09da-41e7-bd0a-e6ffb5e11173").trim();
 
     if (!accessKey) {
       setInquiryError("Something went wrong. Please email me directly at asri.4247@gmail.com");
