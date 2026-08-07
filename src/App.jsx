@@ -414,10 +414,10 @@ export default function App() {
 
 
   const renderForm = () => (
-    <div className="bg-zinc-950 border border-zinc-850 rounded-3xl p-6 sm:p-8 space-y-8 w-full text-left">
+    <div className="space-y-6 w-full text-left lg:bg-zinc-950 lg:border lg:border-zinc-850 lg:rounded-3xl lg:p-8 lg:space-y-8">
       {/* Parameter 1: Project Type */}
       <div>
-        <label className="block text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4">
+        <label className="block text-xs font-bold uppercase tracking-widest text-zinc-400 mb-2.5 sm:mb-4">
           1. What are we building?
         </label>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -430,13 +430,13 @@ export default function App() {
               key={item.val}
               type="button"
               onClick={() => setProjectType(item.val)}
-              className={`p-4 rounded-2xl text-left border transition ${projectType === item.val
+              className={`p-3 sm:p-4 rounded-2xl text-left border transition ${projectType === item.val
                 ? "bg-blue-500/5 border-blue-500 text-white"
                 : "bg-zinc-900/50 border-zinc-850 text-zinc-400 hover:border-zinc-800"
                 }`}
             >
               <p className="font-bold text-sm text-zinc-200">{item.title}</p>
-              <p className="text-xxs sm:text-xs text-zinc-500 mt-1">{item.desc}</p>
+              <p className="text-xxs sm:text-xs text-zinc-500 mt-1 hidden sm:block">{item.desc}</p>
             </button>
           ))}
         </div>
@@ -444,7 +444,7 @@ export default function App() {
 
       {/* Parameter 2: Project Scope */}
       <div>
-        <label className="block text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4">
+        <label className="block text-xs font-bold uppercase tracking-widest text-zinc-400 mb-2.5 sm:mb-4">
           2. Project Scope & Complexity
         </label>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -457,13 +457,13 @@ export default function App() {
               key={item.val}
               type="button"
               onClick={() => setProjectScope(item.val)}
-              className={`p-4 rounded-2xl text-left border transition ${projectScope === item.val
+              className={`p-3 sm:p-4 rounded-2xl text-left border transition ${projectScope === item.val
                 ? "bg-blue-500/5 border-blue-500 text-white"
                 : "bg-zinc-900/50 border-zinc-850 text-zinc-400 hover:border-zinc-800"
                 }`}
             >
               <p className="font-bold text-sm text-zinc-200">{item.title}</p>
-              <p className="text-xxs sm:text-xs text-zinc-500 mt-1">{item.desc}</p>
+              <p className="text-xxs sm:text-xs text-zinc-500 mt-1 hidden sm:block">{item.desc}</p>
             </button>
           ))}
         </div>
@@ -471,7 +471,7 @@ export default function App() {
 
       {/* Parameter 3: Timeline */}
       <div>
-        <label className="block text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4">
+        <label className="block text-xs font-bold uppercase tracking-widest text-zinc-400 mb-2.5 sm:mb-4">
           3. Launch Timeline
         </label>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -484,13 +484,13 @@ export default function App() {
               key={item.val}
               type="button"
               onClick={() => setProjectTimeline(item.val)}
-              className={`p-4 rounded-2xl text-left border transition ${projectTimeline === item.val
+              className={`p-3 sm:p-4 rounded-2xl text-left border transition ${projectTimeline === item.val
                 ? "bg-blue-500/5 border-blue-500 text-white"
                 : "bg-zinc-900/50 border-zinc-850 text-zinc-400 hover:border-zinc-800"
                 }`}
             >
               <p className="font-bold text-sm text-zinc-200">{item.title}</p>
-              <p className="text-xxs sm:text-xs text-zinc-500 mt-1">{item.desc}</p>
+              <p className="text-xxs sm:text-xs text-zinc-500 mt-1 hidden sm:block">{item.desc}</p>
             </button>
           ))}
         </div>
@@ -1044,18 +1044,38 @@ export default function App() {
                 </button>
               </div>
             ) : (
-              <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md overflow-y-auto">
-                <div className="bg-zinc-950 border border-zinc-850 rounded-3xl w-full max-w-md p-5 relative my-8 max-h-[90vh] overflow-y-auto space-y-6">
-                  <button
-                    onClick={() => setShowMobileCalculator(false)}
-                    className="absolute top-4 right-4 h-8 w-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white"
-                  >
-                    ✕
-                  </button>
-                  <h3 className="text-xl font-bold text-white mb-2 text-left">Project Quote Planner</h3>
-                  <div className="space-y-6">
+              <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
+                <div className="bg-zinc-950 border border-zinc-850 rounded-3xl w-full max-w-md relative flex flex-col max-h-[85vh] overflow-hidden shadow-2xl animate-scaleUp">
+                  {/* Modal Header */}
+                  <div className="p-5 pb-3 border-b border-zinc-900 flex justify-between items-center shrink-0">
+                    <h3 className="text-lg font-bold text-white">Project Quote Planner</h3>
+                    <button
+                      onClick={() => setShowMobileCalculator(false)}
+                      className="h-8 w-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white transition"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                  
+                  {/* Scrollable Form Content */}
+                  <div className="flex-1 overflow-y-auto p-5 pb-28 space-y-6">
                     {renderForm()}
-                    {renderPanel()}
+                  </div>
+
+                  {/* Sticky Mobile Bottom Sheet */}
+                  <div className="absolute bottom-0 left-0 w-full bg-zinc-950/95 backdrop-blur-md border-t border-zinc-850 p-4 rounded-b-3xl flex flex-row items-center justify-between gap-4 z-10">
+                    <div>
+                      <p className="text-zinc-500 text-xxs font-bold uppercase tracking-wider mb-0.5">Estimated Budget</p>
+                      <p className="text-base sm:text-lg font-extrabold text-white bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                        ${minEstimate.toLocaleString()} - ${maxEstimate.toLocaleString()}
+                      </p>
+                    </div>
+                    <button
+                      onClick={handleEstimateApply}
+                      className="px-5 py-3 bg-blue-500 hover:bg-blue-600 text-white text-xs font-bold rounded-xl shadow-lg transition duration-200"
+                    >
+                      🚀 Start Project
+                    </button>
                   </div>
                 </div>
               </div>
